@@ -12,7 +12,8 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies      - save_cache:
+          command: ./gradlew androidDependencies
+      - save_cache:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
@@ -35,7 +36,9 @@ jobs:
           destination: apks
       - deploy:
           name: Deploy APK.
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              bash ./scripts/deploy-fabric.sh
-            fi
+          command: ./gradlew crashlyticsUploadDistributionRelease
+#
+#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+#              bash ./scripts/deploy-hockey.sh
+#              bash ./scripts/deploy-fabric.sh
+#            fi
