@@ -8,7 +8,7 @@ android {
         key0 {
             keyAlias 'key0'
             keyPassword 'qWaszx12'
-            storeFile file('./android.jks')
+            storeFile rootProject.file('android.jks')
             storePassword 'Qwerty123'
         }
     }
