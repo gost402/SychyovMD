@@ -52,16 +52,25 @@ jobs:
           root: .
           paths:
             - ./*
+  deploy_debug:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - deploy:
+          name: Deploy Debug.
+          command: |
+              echo success
   deploy_release:
     <<: *defaults
     steps:
       - attach_workspace:
           at: .
       - deploy:
-        name: Deploy APK.
-        command: |
-            bash ./ci_scripts/deploy-hockey.sh
-            bash ./ci_scripts/deploy-fabric.sh
+          name: Deploy APK.
+          command: |
+              bash ./ci_scripts/deploy-hockey.sh
+              bash ./ci_scripts/deploy-fabric.sh
 
 workflows:
   version: 2
@@ -74,6 +83,14 @@ workflows:
       - build_app:
           requires:
             - prepare_dependencies
+      - deploy_debug:
+          requires:
+            - prepare_dependencies
+            - build_app
+            - run_tests
+          filters:
+            branches:
+              only: dev
       - deploy_release:
           requires:
             - prepare_dependencies
