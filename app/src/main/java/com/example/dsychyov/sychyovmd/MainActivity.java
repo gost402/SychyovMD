@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        checkForUpdates();
     }
 
     @Override
@@ -52,4 +56,37 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // ... your own onResume implementation
+        checkForCrashes();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterManagers();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterManagers();
+    }
+
+    private void checkForCrashes() {
+        CrashManager.register(this);
+    }
+
+    private void checkForUpdates() {
+        // Remove this for store builds!
+        UpdateManager.register(this);
+    }
+
+    private void unregisterManagers() {
+        UpdateManager.unregister();
+    }
+
 }

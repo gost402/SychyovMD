@@ -5,5 +5,5 @@ curl \
 -F "status=2" \
 -F "notify=0" \
 -F "ipa=@app/build/outputs/apk/release/app-release.apk" \
--H "X-HockeyAppToken: $HOCKEY_APP_TOKEN" \
-https://rink.hockeyapp.net/api/2/apps/$HOCKEY_APP_ID/app_versions/upload
+-H "X-HockeyAppToken: f82e4ebfbd354bcf8797fa018cc4144e" \
+https://rink.hockeyapp.net/api/2/apps/1a44ecbec3324f39b2e6b2dd14047154/app_versions/upload
