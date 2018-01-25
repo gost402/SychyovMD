@@ -23,20 +23,20 @@ jobs:
           paths:
             - ./*
   run_tests:
-      <<: *defaults
-      steps:
-        - attach_workspace:
-            at: .
-        - run:
-            name: Run Tests
-            command: ./gradlew lint test
-        - run:
-            name: Run Unit Tests
-            command: ./gradlew test
-        - store_artifacts:
-            path: app/build/reports
-            destination: reports
-        - store_test_results:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run Tests
+          command: ./gradlew lint test
+      - run:
+          name: Run Unit Tests
+          command: ./gradlew test
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - store_test_results:
           path: app/build/test-results
   build_app:
     <<: *defaults
