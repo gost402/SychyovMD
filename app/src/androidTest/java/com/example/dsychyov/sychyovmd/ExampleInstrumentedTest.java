@@ -1,4 +1,4 @@
-package com.example.dsychyov.first;
+package com.example.dsychyov.sychyovmd;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.dsychyov.first", appContext.getPackageName());
+        assertEquals("com.example.dsychyov.sychyovmd", appContext.getPackageName());
     }
 }

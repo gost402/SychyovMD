@@ -29,7 +29,7 @@ android {
     }
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.dsychyov.first"
+        applicationId "com.example.dsychyov.sychyovmd"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
@@ -54,6 +54,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile 'net.hockeyapp.android:HockeySDK:5.1.0'
     compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
         transitive = true;
     }

@@ -1,4 +1,4 @@
-package com.example.dsychyov.first;
+package com.example.dsychyov.sychyovmd;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
