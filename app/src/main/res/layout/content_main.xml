@@ -6,26 +6,50 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.dsychyov.sychyovmd.MainActivity"
+    tools:layout_editor_absoluteY="81dp"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
+        <ImageView
+            android:id="@+id/authorPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="349dp"
+            android:adjustViewBounds="false"
+            android:paddingTop="75dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/author"
+            tools:layout_editor_absoluteY="45dp"
+            android:contentDescription="@string/application_author_photo" />
+
+        <TextView
+            android:id="@+id/authorName"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:paddingTop="15dp"
+            android:text="@string/author_name"
+            android:textAppearance="@android:style/TextAppearance.Material.Headline"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="381dp" />
+
+        <TextView
+            android:id="@+id/githubLink"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/github_link"
+            android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="440dp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
