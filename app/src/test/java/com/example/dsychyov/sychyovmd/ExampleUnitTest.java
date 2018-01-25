@@ -1,4 +1,4 @@
-package com.example.dsychyov.first;
+package com.example.dsychyov.sychyovmd;
 
 import org.junit.Test;
 
