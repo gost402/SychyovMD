@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">SychyovMD</string>
     <string name="action_settings">Settings</string>
+    <string name="author_name">Sychyov Denis</string>
+    <string name="github_link"><a href="https://github.com/gost402/SychyovMD/">Github Repo</a></string>
+    <string name="application_author_photo">Application author photo</string>
 </resources>
