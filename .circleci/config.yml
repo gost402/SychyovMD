@@ -58,10 +58,10 @@ jobs:
       - attach_workspace:
           at: .
       - deploy:
-        name: Deploy APK.
-        command: |
-            bash ./ci_scripts/deploy-hockey.sh
-            bash ./ci_scripts/deploy-fabric.sh
+          name: Deploy APK.
+          command: |
+              bash ./ci_scripts/deploy-hockey.sh
+              bash ./ci_scripts/deploy-fabric.sh
 
 workflows:
   version: 2
