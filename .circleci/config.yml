@@ -60,8 +60,8 @@ jobs:
       - deploy:
           name: Deploy APK.
           command: |
-              bash ./ci_scripts/deploy-hockey.sh
-              bash ./ci_scripts/deploy-fabric.sh
+              bash ./scripts/deploy-hockey.sh
+              bash ./scripts/deploy-fabric.sh
 
 workflows:
   version: 2
