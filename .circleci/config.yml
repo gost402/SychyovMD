@@ -22,6 +22,30 @@ jobs:
           root: .
           paths:
             - ./*
+  run_code_analyzers:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Build Lint Report
+          command: ./gradlew lint
+      - run:
+          name: Build PMD Report
+          command: ./gradlew pmd
+      - run:
+          name: Build Findbugs Report
+          command: ./gradlew findbugs
+      - run:
+          name: Build Checkstyle Report
+          command: ./gradlew checkstyle
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
   run_tests:
     <<: *defaults
     steps:
@@ -68,6 +92,9 @@ workflows:
   build:
     jobs:
       - prepare_dependencies
+      - run_code_analyzers:
+          requires:
+            - prepare_dependencies
       - run_tests:
           requires:
             - prepare_dependencies
@@ -76,7 +103,6 @@ workflows:
             - prepare_dependencies
       - deploy_release:
           requires:
-            - prepare_dependencies
             - build_app
             - run_tests
           filters:
