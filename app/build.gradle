@@ -10,6 +10,9 @@ buildscript {
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply from: "$project.rootDir/quality/findbugs.gradle"
+apply from: "$project.rootDir/quality/checkstyle.gradle"
+apply from: "$project.rootDir/quality/pmd.gradle"
 
 repositories {
     maven { url 'https://maven.fabric.io/public' }
