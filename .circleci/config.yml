@@ -12,6 +12,9 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
+          name: Decipher keystore.properties
+          command: openssl enc -d -aes256 -base64 -in app/keystore.properties.enc -out app/keystore.properties -k $KEYSTORE_KEY -md md5
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
