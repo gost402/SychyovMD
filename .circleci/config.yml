@@ -40,7 +40,13 @@ jobs:
           name: Build Checkstyle Report
           command: ./gradlew checkstyle
       - store_artifacts:
-          path: app/build/reports
+          path: app/build/outputs/checkstyle
+          destination: reports
+      - store_artifacts:
+          path: app/build/outputs/pmd
+          destination: reports
+      - store_artifacts:
+          path: app/build/outputs/findbugs
           destination: reports
       - persist_to_workspace:
           root: .
