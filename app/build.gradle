@@ -41,7 +41,7 @@ android {
         //noinspection OldTargetApi
         targetSdkVersion 26
         versionCode 1
-        versionName "0.1"
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "1a44ecbec3324f39b2e6b2dd14047154"]
     }

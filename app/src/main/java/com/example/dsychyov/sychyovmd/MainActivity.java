@@ -3,23 +3,21 @@ package com.example.dsychyov.sychyovmd;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,11 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setToolbar();
         activateLink();
         roundAuthorImage();
-        addFloatingButtonListener();
         continuousDeploymentIntegrations();
     }
 
@@ -94,11 +89,6 @@ public class MainActivity extends AppCompatActivity {
         checkForUpdates();
     }
 
-    private void setToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-    }
-
     private void roundAuthorImage() {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.author);
         RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
@@ -106,17 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView authorPhoto = findViewById(R.id.authorPhoto);
         authorPhoto.setImageDrawable(roundedBitmapDrawable);
-    }
-
-    private void addFloatingButtonListener() {
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     private void activateLink() {
