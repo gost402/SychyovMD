@@ -17,16 +17,17 @@ repositories {
 }
 
 
-//def keystorePropertyFile = rootProject.file('keystore.properties')
-//def keystoreProperties = new Properties()
+def keystorePropertyFile = file('keystore.properties')
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertyFile));
 
 android {
     signingConfigs {
         key0 {
-            keyAlias 'key0'
-            keyPassword 'qWaszx12'
-            storeFile rootProject.file('android.jks')
-            storePassword 'Qwerty123'
+            keyAlias keystoreProperties.getProperty('keyAlias')
+            keyPassword keystoreProperties.getProperty('keyPassword')
+            storeFile rootProject.file(keystoreProperties.getProperty('storeFile'))
+            storePassword keystoreProperties.getProperty('storePassword')
         }
     }
     compileSdkVersion 26
@@ -59,6 +60,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'net.hockeyapp.android:HockeySDK:5.1.0'
     compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
-        transitive = true;
+        transitive = true
     }
 }
