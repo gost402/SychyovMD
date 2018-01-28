@@ -51,6 +51,9 @@ jobs:
       - store_artifacts:
           path: app/build/outputs/findbugs
           destination: reports
+      - store_artifacts:
+          path: app/build/reports/
+          destination: reports
       - persist_to_workspace:
           root: .
           paths:
