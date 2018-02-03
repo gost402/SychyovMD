@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd;
+package com.example.dsychyov.sychyovmd.ui;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,18 +13,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
+import com.example.dsychyov.sychyovmd.R;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
 
 import io.fabric.sdk.android.Fabric;
 
-public class MainActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
         activateLink();
         roundAuthorImage();
         continuousDeploymentIntegrations();

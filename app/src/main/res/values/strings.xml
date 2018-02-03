@@ -4,4 +4,17 @@
     <string name="author_name">Sychyov Denis</string>
     <string name="github_link"><a href="https://github.com/gost402/SychyovMD/">Github Repo</a></string>
     <string name="application_author_photo">Application author photo</string>
+    <string name="next">Next</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_message">Приветствие</string>
+    <string name="app_description">Описание Приложения</string>
+    <string name="light_theme_radiobutton">Светлая тема</string>
+    <string name="dark_theme_radiobutton">Темная Тема</string>
+    <string name="standard_layout">Стандартный макет</string>
+    <string name="standard_layout_description">Портретная: 4 иконки в ряд\nЛандшафтная: 6 иконки в ряд</string>
+    <string name="dense_layout">Плотный макет</string>
+    <string name="dense_layout_description">Портретная: 5 иконки в ряд\nЛандшафтная: 7 иконки в ряд</string>
+
+    <string name="launcher_theme_dark_key">LAUNCHER_THEME_DARK</string>
+    <string name="launcher_layout_dense_key">LAUNCHER_LAYOUT_DENSE</string>
 </resources>

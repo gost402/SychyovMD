@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.dsychyov.sychyovmd.ui.WelcomeActivity"
+    android:layout_margin="@dimen/welcome_page_margin"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/welcome_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/next_step"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/next_step"
+        android:text="@string/next"
+        style="@style/AppTheme.NextButton" />
+</RelativeLayout>

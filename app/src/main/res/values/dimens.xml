@@ -1,3 +1,18 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="launcher_icon_margin">16dp</dimen>
+    <dimen name="welcome_page_margin">16dp</dimen>
+    <dimen name="welcome_page_app_icon">152dp</dimen>
+    <dimen name="welcome_page_app_name">20sp</dimen>
+    <dimen name="welcome_page_hello_message">16sp</dimen>
+    <dimen name="welcome_page_app_description">16sp</dimen>
+    <dimen name="welcome_page_app_theme">24sp</dimen>
+    <dimen name="welcome_page_app_theme_radiobutton_margin">20dp</dimen>
+    <dimen name="welcome_page_app_layout">20sp</dimen>
+    <dimen name="welcome_page_app_layout_description">14dp</dimen>
+    <dimen name="welcome_page_radiobutton_margin">10dp</dimen>
+    <dimen name="welcome_page_radiobutton_subtext_margin">16dp</dimen>
+    <dimen name="welcome_page_radio_button_border">1dp</dimen>
+    <dimen name="welcome_page_radio_button_border_radius">3dp</dimen>
 </resources>

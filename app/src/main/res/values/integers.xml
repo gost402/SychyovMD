@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="span_count_standard">4</integer>
+    <integer name="span_count_standard_land">6</integer>
+    <integer name="span_count_dense">5</integer>
+    <integer name="span_count_dense_land">7</integer>
+</resources>
