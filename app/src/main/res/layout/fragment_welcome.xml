@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:gravity="center">
 
-    <include layout="@layout/author_image" />
+    <include layout="@layout/welcome_author_image" />
 
     <TextView
         style="@style/AppTheme.WelcomePageAppName"

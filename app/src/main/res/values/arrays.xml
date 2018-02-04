@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preference_sorting_type" >
+        <item>@string/preference_sorting_type_default_key</item>
+        <item>@string/preference_sorting_type_by_date_key</item>
+        <item>@string/preference_sorting_type_by_name_asc_key</item>
+        <item>@string/preference_sorting_type_by_name_desc_key</item>
+        <item>@string/launcher_not_initialized_by_frequency_key</item>
+    </string-array>
+    <string-array name="preference_sorting_type_titles" >
+        <item>@string/preference_sort_default</item>
+        <item>@string/preference_sort_by_created_at</item>
+        <item>@string/preference_sort_by_name_asc</item>
+        <item>@string/preference_sort_by_name_desc</item>
+        <item>@string/preference_sort_by_frequency</item>
+    </string-array>
+</resources>

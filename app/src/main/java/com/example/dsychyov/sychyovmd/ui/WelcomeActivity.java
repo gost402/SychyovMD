@@ -1,17 +1,16 @@
 package com.example.dsychyov.sychyovmd.ui;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.ui.adapters.WelcomePagerAdapter;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseActivity {
     ViewPager viewPager;
     WelcomePagerAdapter welcomePagerAdapter;
 
@@ -20,8 +19,18 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        viewPager = findViewById(R.id.welcome_view_pager);
+        initializeWelcomePagerAdapter();
+        initializeTabIndicator();
+    }
+
+    private void initializeTabIndicator() {
+        TabLayout tabLayout = findViewById(R.id.tab_dots);
+        tabLayout.setupWithViewPager(viewPager, true);
+    }
+
+    private void initializeWelcomePagerAdapter() {
         welcomePagerAdapter = new WelcomePagerAdapter(getSupportFragmentManager());
+        viewPager = findViewById(R.id.welcome_view_pager);
         viewPager.setAdapter(welcomePagerAdapter);
 
         findViewById(R.id.next_step).setOnClickListener(new View.OnClickListener() {
@@ -37,24 +46,10 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void showLauncherActivity(View view) {
-        saveActivityResult();
-
-        final Intent intent = new Intent(this, LauncherActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void saveActivityResult() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.edit().putBoolean(getString(R.string.launcher_not_initialized_key), false).apply();
 
-        final boolean isDark = welcomePagerAdapter.getThemeChooserFragment().isDark();
-        final boolean isDense = welcomePagerAdapter.getLayoutChooserFragment().isDense();
-
-        SharedPreferences.Editor editor = preferences.edit();
-
-        editor.putBoolean(getString(R.string.launcher_theme_dark_key), isDark);
-        editor.putBoolean(getString(R.string.launcher_layout_dense_key), isDense);
-
-        editor.apply();
+        finish();
+        startActivityForClass(LauncherActivity.class);
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    tools:ignore="UseCompoundDrawables">
+
+    <!--TODO: Add RTL View (Direction) -->
+    <ImageView
+        android:id="@+id/launcher_app_image"
+        android:layout_width="@dimen/layout_list_icon_size"
+        android:layout_height="@dimen/layout_list_icon_size"
+        android:contentDescription="@string/placeholder" />
+
+    <TextView
+        android:id="@+id/launcher_app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/layout_list_text_padding"
+        android:paddingEnd="@dimen/layout_list_text_padding"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/placeholder"/>
+</LinearLayout>

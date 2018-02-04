@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.dsychyov.sychyovmd.ui.LauncherActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/launcher_content"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-    <!--</android.support.v7.widget.RecyclerView>-->
-
-    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/launcher_content"
+    <include
+        layout="@layout/launcher_navigation_view_wrapper"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="@dimen/launcher_icon_margin"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.LauncherActivity" >
-
-    </android.support.v7.widget.RecyclerView>
-
-
-</android.support.constraint.ConstraintLayout>
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/launcher_navigation_view_header"
+        app:menu="@menu/activity_navigation_view_drawer" />
+</android.support.v4.widget.DrawerLayout>

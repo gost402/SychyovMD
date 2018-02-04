@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="author_name">سيشيف دينيس</string>
+    <string name="next">في المرة القادمة</string>
+    <string name="welcome_message">ترحيب</string>
+    <string name="app_description">قاذفة خفيفة</string>
+    <string name="light_theme_radiobutton">موضوع الضوء</string>
+    <string name="dark_theme_radiobutton">موضوع مظلم</string>
+    <string name="standard_layout">تخطيط قياسي</string>
+    <string name="standard_layout_description">صورة: 4 الرموز في صف المناظر \nالطبيعية: 6 الرموز في صف واحد</string>
+    <string name="dense_layout">تخطيط كثيف</string>
+    <string name="dense_layout_description">صورة: 5 الرموز في صف المناظر \nالطبيعية: 7 الرموز في صف واحد</string>
+    <string name="grid">شبكة</string>
+    <string name="list">قائمة</string>
+    <string name="settings">إعدادات</string>
+    <string name="app_delete">حذف</string>
+    <string name="app_frequency">تردد</string>
+    <string name="app_info">معلومات</string>
+    <string name="preference_sort_type">فرز</string>
+    <string name="preference_dense_layout">شبكة الكثافة</string>
+    <string name="preference_dark_theme">موضوع مظلم</string>
+    <string name="preference_show_welcome_on_next_start">إظهار التحية في المرة القادمة التي تبدأ فيها</string>
+    <string name="preference_sort_default">افتراضي</string>
+    <string name="preference_sort_by_created_at">حسب التاريخ</string>
+    <string name="preference_sort_by_name_asc">حسب الاسم أسك</string>
+    <string name="preference_sort_by_name_desc">حسب الاسم ديسك</string>
+    <string name="preference_sort_by_frequency">حسب الشعبية</string>
+</resources>

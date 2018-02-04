@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd;
+package com.example.dsychyov.sychyovmd.ui;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

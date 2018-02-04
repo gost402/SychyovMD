@@ -1,16 +1,10 @@
 package com.example.dsychyov.sychyovmd.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v7.app.AppCompatActivity;
-import android.text.method.LinkMovementMethod;
-import android.view.Menu;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.dsychyov.sychyovmd.R;
@@ -20,36 +14,38 @@ import net.hockeyapp.android.UpdateManager;
 
 import io.fabric.sdk.android.Fabric;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.setActivityTheme(this);
+
         setContentView(R.layout.activity_profile);
-        activateLink();
-        roundAuthorImage();
         continuousDeploymentIntegrations();
+
+        initializeToolbar();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    private void initializeToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+
+        if(actionBar == null) {
+            return;
+        }
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -88,24 +84,5 @@ public class ProfileActivity extends AppCompatActivity {
     private void continuousDeploymentIntegrations() {
         Fabric.with(this, new Crashlytics());
         checkForUpdates();
-    }
-
-    private void roundAuthorImage() {
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.author);
-        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-        roundedBitmapDrawable.setCircular(true);
-
-        ImageView authorPhoto = findViewById(R.id.authorPhoto);
-        authorPhoto.setImageDrawable(roundedBitmapDrawable);
-    }
-
-    private void activateLink() {
-        // githubLink has links specified by putting <a> tags in the string
-        // resource.  By default these links will appear but not
-        // respond to user input.  To make them active, you need to
-        // call setMovementMethod() on the TextView object.
-
-        TextView githubLink = findViewById(R.id.githubLink);
-        githubLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }

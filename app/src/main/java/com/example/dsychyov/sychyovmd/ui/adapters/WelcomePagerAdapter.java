@@ -2,7 +2,6 @@ package com.example.dsychyov.sychyovmd.ui.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.dsychyov.sychyovmd.ui.fragments.AppDescriptionFragment;
@@ -16,18 +15,12 @@ public class WelcomePagerAdapter extends FragmentStatePagerAdapter {
     public WelcomePagerAdapter(FragmentManager fm) {
         super(fm);
 
-        steps = new Fragment[]{
-            new WelcomeFragment(), new AppDescriptionFragment(),
-            new ThemeChooserFragment(), new LayoutChooserFragment()
-        };
-    }
+        Fragment welcome = new WelcomeFragment();
+        Fragment appDescription = new AppDescriptionFragment();
+        Fragment themeChooser = new ThemeChooserFragment();
+        Fragment layoutChooser = new LayoutChooserFragment();
 
-    public ThemeChooserFragment getThemeChooserFragment() {
-        return (ThemeChooserFragment) getItem(2);
-    }
-
-    public LayoutChooserFragment getLayoutChooserFragment() {
-        return (LayoutChooserFragment) getItem(3);
+        steps = new Fragment[]{welcome, appDescription, themeChooser, layoutChooser};
     }
 
     @Override

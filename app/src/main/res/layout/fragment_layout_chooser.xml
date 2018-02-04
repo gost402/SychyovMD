@@ -4,6 +4,6 @@
     style="@style/AppTheme.WelcomePageRadiobuttonsWrapper"
     tools:context="com.example.dsychyov.sychyovmd.ui.fragments.ThemeChooserFragment">
 
-    <include layout="@layout/layout_standard_radio_button" />
-    <include layout="@layout/layout_dense_radio_button" />
+    <include layout="@layout/welcome_radio_button_layout_standard" />
+    <include layout="@layout/welcome_radio_button_layout_dense" />
 </LinearLayout>

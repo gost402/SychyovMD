@@ -4,5 +4,5 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/AppTheme.WelcomePageAppIcon"
     android:id="@+id/authorPhoto"
-    app:srcCompat="@drawable/author"
+    app:srcCompat="@drawable/author_circle"
     android:contentDescription="@string/author_name" />

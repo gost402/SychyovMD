@@ -5,6 +5,6 @@
     tools:context="com.example.dsychyov.sychyovmd.ui.fragments.ThemeChooserFragment"
     android:baselineAligned="false">
 
-    <include layout="@layout/theme_light_radio_button" />
-    <include layout="@layout/theme_dark_radio_button" />
+    <include layout="@layout/welcome_radio_button_theme_light" />
+    <include layout="@layout/welcome_radio_button_theme_dark" />
 </LinearLayout>
