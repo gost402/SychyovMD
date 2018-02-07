@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="author_name">Sychyov Denis</string>
+    <string name="next">Next</string>
+    <string name="welcome_message">Greetings!</string>
+    <string name="app_description">Lightweight launcher</string>
+    <string name="light_theme_radiobutton">Light Theme</string>
+    <string name="dark_theme_radiobutton">Dark Theme</string>
+    <string name="standard_layout">Standard Layout</string>
+    <string name="standard_layout_description">Portrait: 4 icons in a row\nLandscape: 6 icons in a row</string>
+    <string name="dense_layout">Dense Layout</string>
+    <string name="dense_layout_description">Portrait: 5 icons in a row\nLandscape: 7 icons in a row</string>
+    <string name="grid">Grid</string>
+    <string name="list">List</string>
+    <string name="settings">Settings</string>
+    <string name="app_delete">Delete</string>
+    <string name="app_frequency">Frequency</string>
+    <string name="app_info">Information</string>
+    <string name="preference_sort_type">Sort</string>
+    <string name="preference_dense_layout">Dense Grid</string>
+    <string name="preference_dark_theme">Dark Theme</string>
+    <string name="preference_show_welcome_on_next_start">Show welcome on next start</string>
+    <string name="preference_sort_default">Default</string>
+    <string name="preference_sort_by_created_at">By Creation Date</string>
+    <string name="preference_sort_by_name_asc">By Name (asc)</string>
+    <string name="preference_sort_by_name_desc">By Name (desc)</string>
+    <string name="preference_sort_by_frequency">By Popularity</string>
+</resources>

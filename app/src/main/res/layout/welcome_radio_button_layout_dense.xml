@@ -1,0 +1,27 @@
+<LinearLayout android:layout_weight="1"
+    android:orientation="vertical"
+    android:id="@+id/dense_layout_radio_button_wrapper"
+    style="@style/AppTheme.WelcomePageRadiobuttonWrapper"
+    android:gravity="center_vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+
+        <RadioButton
+            android:id="@+id/dense_layout_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/AppTheme.WelcomePageLayoutRadiobutton"
+            android:text="@string/dense_layout" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/AppTheme.WelcomePageLayoutRadiobuttonSubtext"
+        android:text="@string/dense_layout_description" />
+</LinearLayout>

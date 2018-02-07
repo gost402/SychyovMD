@@ -1,0 +1,10 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AppTheme.WelcomePageRadiobuttonsWrapper"
+    android:orientation="horizontal"
+    tools:context="com.example.dsychyov.sychyovmd.ui.fragments.ThemeChooserFragment"
+    android:baselineAligned="false">
+
+    <include layout="@layout/welcome_radio_button_theme_light" />
+    <include layout="@layout/welcome_radio_button_theme_dark" />
+</LinearLayout>

@@ -1,0 +1,20 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dsychyov.sychyovmd.ui.fragments.WelcomeFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <include layout="@layout/welcome_author_image" />
+
+    <TextView
+        style="@style/AppTheme.WelcomePageAppName"
+        android:text="@string/app_name" />
+    <TextView
+        style="@style/AppTheme.WelcomePageHelloMessage"
+        android:text="@string/welcome_message" />
+
+</LinearLayout>

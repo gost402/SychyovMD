@@ -1,0 +1,16 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dsychyov.sychyovmd.ui.fragments.AppDescriptionFragment"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <include layout="@layout/welcome_app_image" />
+
+    <TextView
+        style="@style/AppTheme.WelcomePageAppDescription"
+        android:text="@string/app_description" />
+</LinearLayout>
