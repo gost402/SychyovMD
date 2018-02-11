@@ -43,13 +43,20 @@ public class ProfileItemsFragment extends Fragment {
     private List<ProfileItem> prepareProfileInfo() {
         List<ProfileItem> list = new ArrayList<>();
 
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_info), getString(R.string.author_name), getString(R.string.profile_author)));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_phone), "(33) 652 64 09", getString(R.string.profile_phone)));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_email), getString(R.string.author_email), getString(R.string.profile_email)));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "vk.com/denissychyov", getString(R.string.profile_vk)));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "facebook.com/denis.sychou", getString(R.string.profile_facebook)));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "steamcommunity.com/id/gost402", getString(R.string.profile_steam)));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "github.com/gost402", getString(R.string.profile_github)));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_info), getString(R.string.author_name),
+                getString(R.string.profile_author), false));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_phone), "(33) 652 64 09",
+                getString(R.string.profile_phone), false));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_email), getString(R.string.author_email),
+                getString(R.string.profile_email), false));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://vk.com/denissychyov",
+                getString(R.string.profile_vk), true));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://facebook.com/denis.sychou",
+                getString(R.string.profile_facebook), true));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://steamcommunity.com/id/gost402",
+                getString(R.string.profile_steam), true));
+        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://github.com/gost402",
+                getString(R.string.profile_github), true));
 
         return list;
     }
