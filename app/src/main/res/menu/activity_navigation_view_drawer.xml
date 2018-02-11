@@ -3,16 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item
-        android:id="@+id/navigation_drawer_grid_layout_button"
-        android:icon="@android:drawable/ic_dialog_dialer"
-        android:title="@string/grid" />
-    <item
-        android:id="@+id/navigation_drawer_linear_layout_button"
-        android:icon="@android:drawable/ic_menu_view"
-        android:title="@string/list" />
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_drawer_grid_layout_button"
+            android:icon="@drawable/ic_menu_grid"
+            android:title="@string/grid" />
+        <item
+            android:id="@+id/navigation_drawer_linear_layout_button"
+            android:icon="@drawable/ic_menu_list"
+            android:title="@string/list" />
+    </group>
+
     <item
         android:id="@+id/navigation_drawer_settings_button"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/ic_menu_settings"
         android:title="@string/settings" />
 </menu>

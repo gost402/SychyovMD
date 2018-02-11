@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd.ui;
+package com.example.dsychyov.sychyovmd.ui.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.dsychyov.sychyovmd.ui.Utils;
 
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 

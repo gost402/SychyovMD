@@ -8,7 +8,7 @@ import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 
 import com.example.dsychyov.sychyovmd.R;
-import com.example.dsychyov.sychyovmd.ui.SettingsActivity;
+import com.example.dsychyov.sychyovmd.ui.activities.SettingsActivity;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SettingsFragment extends PreferenceFragment {

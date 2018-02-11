@@ -41,4 +41,13 @@
     <string name="preference_sort_by_name_asc">По имени (возр.)</string>
     <string name="preference_sort_by_name_desc">По имени (убыв.)</string>
     <string name="preference_sort_by_frequency">По популярности</string>
+    <string name="description_package_name">Пакет</string>
+    <string name="description_created_at">Создан</string>
+    <string name="profile_author">Автор</string>
+    <string name="profile_phone">Телефон</string>
+    <string name="profile_email" translatable="false">Email</string>
+    <string name="profile_vk" translatable="false">VK</string>
+    <string name="profile_facebook" translatable="false">Facebook</string>
+    <string name="profile_steam" translatable="false">Steam</string>
+    <string name="profile_github" translatable="false">Github</string>
 </resources>

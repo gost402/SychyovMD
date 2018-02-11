@@ -64,7 +64,12 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if(comparator == null) {
             apps.add(app);
         } else {
-            int appPosition = -Collections.binarySearch(apps, app, comparator) - 1;
+            int appPosition = Collections.binarySearch(apps, app, comparator);
+
+            if(appPosition < 0) {
+                appPosition = -appPosition - 1;
+            }
+
             apps.add(appPosition, app);
         }
 
@@ -74,11 +79,16 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void bindGridView(@NonNull final Holder.GridHolder gridHolder, final int position) {
         final App app = apps.get(position);
 
-        ImageView iconView = gridHolder.itemView.findViewById(R.id.launcher_app_image);
+        final ImageView iconView = gridHolder.itemView.findViewById(R.id.launcher_app_image);
         final TextView nameView = gridHolder.itemView.findViewById(R.id.launcher_app_name);
+        final TextView descriptionView = gridHolder.itemView.findViewById(R.id.launcher_app_description);
 
         iconView.setImageDrawable(app.getIcon());
         nameView.setText(app.getName());
+
+        if(descriptionView != null) {
+            descriptionView.setText(app.getDescription());
+        }
 
         addOnClickListener(app, gridHolder.itemView);
         addOnLongClickListener(app, gridHolder.itemView);

@@ -1,18 +1,31 @@
 <resources>
+    <attr name="icon_info" format="reference"/>
+    <attr name="icon_phone" format="reference"/>
+    <attr name="icon_email" format="reference"/>
+    <attr name="icon_browser" format="reference"/>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="icon_info" >@drawable/ic_action_info</item>
+        <item name="icon_phone" >@drawable/ic_action_phone</item>
+        <item name="icon_email" >@drawable/ic_action_email</item>
+        <item name="icon_browser" >@drawable/ic_action_browser</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat">
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="icon_info" >@drawable/ic_action_info_dark</item>
+        <item name="icon_phone" >@drawable/ic_action_phone_dark</item>
+        <item name="icon_email" >@drawable/ic_action_email_dark</item>
+        <item name="icon_browser" >@drawable/ic_action_browser_dark</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -1,5 +1,8 @@
 package com.example.dsychyov.sychyovmd.ui.adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,12 +32,25 @@ public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapte
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        ProfileItem item = profileInfoList.get(position);
+        final ProfileItem item = profileInfoList.get(position);
 
         holder.item = item;
         holder.iconView.setImageDrawable(item.getIcon());
         holder.mainTextView.setText(item.getText());
         holder.subTextView.setText(item .getSubtext());
+
+        final Context context = holder.itemView.getContext();
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(item.isOpenInBrowser()) {
+                    final Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(item.getText()));
+                    context.startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
