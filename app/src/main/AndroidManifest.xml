@@ -17,7 +17,6 @@
 
         <activity
             android:name=".ui.EntryActivity"
-            android:launchMode="singleInstance"
             android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

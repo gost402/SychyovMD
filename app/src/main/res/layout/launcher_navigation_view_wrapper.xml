@@ -8,7 +8,7 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -30,5 +30,4 @@
         android:clipToPadding="false"
         android:padding="@dimen/launcher_icon_margin"
         tools:context=".activity.LauncherActivity" />
-
 </android.support.design.widget.CoordinatorLayout>
