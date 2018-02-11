@@ -25,7 +25,8 @@
     <string name="preference_sort_by_name_asc">By Name (asc)</string>
     <string name="preference_sort_by_name_desc">By Name (desc)</string>
     <string name="preference_sort_by_frequency">By Popularity</string>
-    <string name="description_frequency">Frequency</string>
     <string name="description_created_at">Created</string>
     <string name="description_package_name">Package</string>
+    <string name="profile_author">Author</string>
+    <string name="profile_phone">Phone</string>
 </resources>

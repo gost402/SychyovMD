@@ -1,6 +1,9 @@
 package com.example.dsychyov.sychyovmd.ui.fragments;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -43,21 +46,29 @@ public class ProfileItemsFragment extends Fragment {
     private List<ProfileItem> prepareProfileInfo() {
         List<ProfileItem> list = new ArrayList<>();
 
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_info), getString(R.string.author_name),
-                getString(R.string.profile_author), false));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_phone), "(33) 652 64 09",
-                getString(R.string.profile_phone), false));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_email), getString(R.string.author_email),
-                getString(R.string.profile_email), false));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://vk.com/denissychyov",
-                getString(R.string.profile_vk), true));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://facebook.com/denis.sychou",
-                getString(R.string.profile_facebook), true));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://steamcommunity.com/id/gost402",
-                getString(R.string.profile_steam), true));
-        list.add(new ProfileItem(getResources().getDrawable(R.drawable.ic_action_browser), "https://github.com/gost402",
-                getString(R.string.profile_github), true));
+        if(getContext() == null) {
+            return list;
+        }
+
+        Drawable browserIcon = getDrawableFromAttribute(getContext(), R.attr.icon_browser);
+        Drawable infoIcon = getDrawableFromAttribute(getContext(), R.attr.icon_info);
+        Drawable phoneIcon = getDrawableFromAttribute(getContext(), R.attr.icon_phone);
+        Drawable emailIcon = getDrawableFromAttribute(getContext(), R.attr.icon_email);
+
+        list.add(new ProfileItem(infoIcon, getString(R.string.author_name), getString(R.string.profile_author), false));
+        list.add(new ProfileItem(phoneIcon, "(33) 652 64 09", getString(R.string.profile_phone), false));
+        list.add(new ProfileItem(emailIcon, getString(R.string.author_email), getString(R.string.profile_email), false));
+        list.add(new ProfileItem(browserIcon, "https://vk.com/denissychyov", getString(R.string.profile_vk), true));
+        list.add(new ProfileItem(browserIcon, "https://facebook.com/denis.sychou", getString(R.string.profile_facebook), true));
+        list.add(new ProfileItem(browserIcon, "https://steamcommunity.com/id/gost402", getString(R.string.profile_steam), true));
+        list.add(new ProfileItem(browserIcon, "https://github.com/gost402", getString(R.string.profile_github), true));
 
         return list;
+    }
+
+    private Drawable getDrawableFromAttribute(Context context, int id) {
+        TypedArray a = context.getTheme().obtainStyledAttributes(new int[] { id });
+        int attributeResourceId = a.getResourceId(0, 0);
+        return getResources().getDrawable(attributeResourceId);
     }
 }

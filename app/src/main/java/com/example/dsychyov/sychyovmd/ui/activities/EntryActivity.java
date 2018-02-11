@@ -20,7 +20,7 @@ public class EntryActivity extends BaseActivity {
         boolean shouldBeInitialized = PreferenceManager.getDefaultSharedPreferences(this)
                 .getBoolean(getString(R.string.launcher_not_initialized_key), true);
 
-//        continuousDeploymentIntegrations();
+        continuousDeploymentIntegrations();
 
         finish();
         if(shouldBeInitialized) {
@@ -30,38 +30,38 @@ public class EntryActivity extends BaseActivity {
         }
     }
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        checkForCrashes();
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        unregisterManagers();
-//    }
-//
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        unregisterManagers();
-//    }
-//
-//    private void continuousDeploymentIntegrations() {
-//        Fabric.with(this, new Crashlytics());
-//        checkForUpdates();
-//    }
-//
-//    private void checkForUpdates() {
-//        UpdateManager.register(this);
-//    }
-//
-//    private void checkForCrashes() {
-//        CrashManager.register(this);
-//    }
-//
-//    private void unregisterManagers() {
-//        UpdateManager.unregister();
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        checkForCrashes();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterManagers();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterManagers();
+    }
+
+    private void continuousDeploymentIntegrations() {
+        Fabric.with(this, new Crashlytics());
+        checkForUpdates();
+    }
+
+    private void checkForUpdates() {
+        UpdateManager.register(this);
+    }
+
+    private void checkForCrashes() {
+        CrashManager.register(this);
+    }
+
+    private void unregisterManagers() {
+        UpdateManager.unregister();
+    }
 }
