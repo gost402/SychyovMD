@@ -26,4 +26,6 @@
     <dimen name="layout_list_icon_size">48dp</dimen>
     <dimen name="profile_text_main">16sp</dimen>
     <dimen name="profile_sub_text">12sp</dimen>
+    <dimen name="layout_list_image_size">40dp</dimen>
+    <dimen name="layout_list_item_margin">16dp</dimen>
 </resources>

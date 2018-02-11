@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd.ui;
+package com.example.dsychyov.sychyovmd.ui.activities;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd.ui;
+package com.example.dsychyov.sychyovmd.ui.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
 import com.example.dsychyov.sychyovmd.R;
+import com.example.dsychyov.sychyovmd.ui.Utils;
 
 import net.hockeyapp.android.CrashManager;
 import net.hockeyapp.android.UpdateManager;
@@ -22,7 +23,6 @@ public class ProfileActivity extends BaseActivity {
         Utils.setActivityTheme(this);
 
         setContentView(R.layout.activity_profile);
-        continuousDeploymentIntegrations();
 
         initializeToolbar();
     }
@@ -47,42 +47,5 @@ public class ProfileActivity extends BaseActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // ... your own onResume implementation
-        checkForCrashes();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        unregisterManagers();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        unregisterManagers();
-    }
-
-    private void checkForCrashes() {
-        CrashManager.register(this);
-    }
-
-    private void checkForUpdates() {
-        // Remove this for store builds!
-        UpdateManager.register(this);
-    }
-
-    private void unregisterManagers() {
-        UpdateManager.unregister();
-    }
-
-    private void continuousDeploymentIntegrations() {
-        Fabric.with(this, new Crashlytics());
-        checkForUpdates();
     }
 }

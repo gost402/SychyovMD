@@ -17,7 +17,7 @@
     <string name="app_frequency">Частота</string>
     <string name="app_info">Информация</string>
     <string name="preference_sort_type">Сортировка</string>
-    <string name="preference_dense_layout">Плотность сетки</string>
+    <string name="preference_dense_layout">Плотная сетка</string>
     <string name="preference_dark_theme">Темная тема</string>
     <string name="preference_show_welcome_on_next_start">Показать приветствие при следующем старте</string>
     <string name="preference_sort_default">Без сортировки</string>
@@ -25,4 +25,7 @@
     <string name="preference_sort_by_name_asc">По имени (возр.)</string>
     <string name="preference_sort_by_name_desc">По имени (убыв.)</string>
     <string name="preference_sort_by_frequency">По популярности</string>
+    <string name="description_frequency">Частота</string>
+    <string name="description_created_at">Создан</string>
+    <string name="description_package_name">Пакет</string>
 </resources>
