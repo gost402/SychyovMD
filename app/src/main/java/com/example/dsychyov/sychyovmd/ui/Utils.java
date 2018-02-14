@@ -7,6 +7,7 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 
 import com.example.dsychyov.sychyovmd.R;
+import com.yandex.metrica.YandexMetrica;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -19,6 +20,8 @@ public class Utils
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         boolean isDark = preferences.getBoolean(activity.getResources().getString(R.string.launcher_theme_dark_key), false);
 
+        YandexMetrica.reportEvent("User use dark theme: " + String.valueOf(isDark));
+
         activity.setTheme(isDark ? R.style.AppTheme_Dark : R.style.AppTheme);
     }
 
@@ -28,10 +31,16 @@ public class Utils
     }
 
     public static Locale getCurrentLocale(Context context){
+        Locale locale;
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            return context.getResources().getConfiguration().getLocales().get(0);
+            locale = context.getResources().getConfiguration().getLocales().get(0);
         } else{
-            return context.getResources().getConfiguration().locale;
+            locale = context.getResources().getConfiguration().locale;
         }
+
+        YandexMetrica.reportEvent("User locale: " + locale.toString());
+
+        return locale;
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.ui.adapters.WelcomePagerAdapter;
+import com.yandex.metrica.YandexMetrica;
 
 public class WelcomeActivity extends BaseActivity {
     ViewPager viewPager;
@@ -16,6 +17,8 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        YandexMetrica.reportEvent("WelcomeActivity OnCreate");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 

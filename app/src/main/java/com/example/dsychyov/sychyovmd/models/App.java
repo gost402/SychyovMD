@@ -14,6 +14,7 @@ import android.support.v4.util.Pair;
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDAO;
 import com.example.dsychyov.sychyovmd.ui.Utils;
+import com.yandex.metrica.YandexMetrica;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -132,7 +133,10 @@ public class App {
     public static Comparator<App> getAppComparator(Context context) {
         Comparator<App> comparator = null;
 
-        switch (getSortType(context)) {
+        String sortType = getSortType(context);
+        YandexMetrica.reportEvent("Sort type: " + sortType);
+
+        switch (sortType) {
             case "Date": {
                 comparator = App.createdAtComparator;
                 break;

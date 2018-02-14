@@ -24,6 +24,8 @@ import com.example.dsychyov.sychyovmd.models.App;
 import com.example.dsychyov.sychyovmd.ui.adapters.LauncherAdapter;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.GridFragment;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.ListFragment;
+import com.example.dsychyov.sychyovmd.ui.fragments.launcher.DesktopFragment;
+import com.yandex.metrica.YandexMetrica;
 
 public class LauncherActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,9 +44,11 @@ public class LauncherActivity extends BaseActivity
 
             switch (action) {
                 case Intent.ACTION_PACKAGE_REMOVED:
+                    YandexMetrica.reportEvent("User remove application");
                     removeApplication(packageName);
                     break;
                 case Intent.ACTION_PACKAGE_ADDED:
+                    YandexMetrica.reportEvent("User add application");
                     addApplication(packageName);
                     break;
             }
@@ -54,6 +58,8 @@ public class LauncherActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        YandexMetrica.reportEvent("LauncherActivity OnCreate");
 
         setContentView(R.layout.activity_launcher);
 
@@ -85,11 +91,17 @@ public class LauncherActivity extends BaseActivity
     public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.navigation_drawer_grid_layout_button) {
+        if (id == R.id.navigation_drawer_desktop_button) {
+            YandexMetrica.reportEvent("User choose desktop fragment");
+            replaceLauncherFragment(new DesktopFragment());
+        } else if (id == R.id.navigation_drawer_grid_layout_button) {
+            YandexMetrica.reportEvent("User choose grid fragment");
             replaceLauncherFragment(new GridFragment());
         } else if (id == R.id.navigation_drawer_linear_layout_button) {
+            YandexMetrica.reportEvent("User choose linear layout fragment");
             replaceLauncherFragment(new ListFragment());
         } else if (id == R.id.navigation_drawer_settings_button) {
+            YandexMetrica.reportEvent("User choose settings");
             startActivityForClass(SettingsActivity.class);
         }
 

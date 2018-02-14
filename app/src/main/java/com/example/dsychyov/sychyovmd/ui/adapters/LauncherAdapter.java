@@ -13,9 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dsychyov.sychyovmd.LauncherApplication;
 import com.example.dsychyov.sychyovmd.ui.Holder;
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.models.App;
+import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
+import com.example.dsychyov.sychyovmd.viewmodel.DesktopAppDb;
+import com.example.dsychyov.sychyovmd.viewmodel.DesktopAppDbHolder;
+import com.example.dsychyov.sychyovmd.viewmodel.InsertDesktopAppService;
+import com.yandex.metrica.YandexMetrica;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -102,6 +108,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 if (intent == null) {
                     return;
                 }
+                YandexMetrica.reportEvent("Start another app");
 
                 app.incrementFrequency(view.getContext());
                 view.getContext().startActivity(intent);
@@ -121,19 +128,29 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.app_delete: {
+                                YandexMetrica.reportEvent("Deleting app");
                                 Intent intent = new Intent(Intent.ACTION_DELETE);
                                 intent.setData(Uri.parse("package:" + app.getPackageName()));
                                 view.getContext().startActivity(intent);
                                 break;
                             }
                             case R.id.app_info: {
+                                YandexMetrica.reportEvent("Show app info");
                                 Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                                 intent.setData(Uri.parse("package:" + app.getPackageName()));
                                 view.getContext().startActivity(intent);
                                 break;
                             }
                             case R.id.app_frequency: {
+                                YandexMetrica.reportEvent("Show app frequency");
                                 Toast.makeText(view.getContext(), String.valueOf(app.getFrequency()), Toast.LENGTH_LONG).show();
+                                break;
+                            }
+                            case R.id.app_add_desktop: {
+                                YandexMetrica.reportEvent("Add app on desktop");
+                                Intent intent = new Intent(view.getContext().getApplicationContext(), InsertDesktopAppService.class);
+                                intent.putExtra("packageName", app.getPackageName());
+                                view.getContext().startService(intent);
                                 break;
                             }
                             default:

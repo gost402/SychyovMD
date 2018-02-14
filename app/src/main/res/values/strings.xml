@@ -50,4 +50,9 @@
     <string name="profile_facebook" translatable="false">Facebook</string>
     <string name="profile_steam" translatable="false">Steam</string>
     <string name="profile_github" translatable="false">Github</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="desktop">Рабочий стол</string>
+    <string name="app_add_desktop">Добавить на стол</string>
 </resources>

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.dsychyov.sychyovmd.listeners.ChangeThemeSharedPreferencesListener;
 import com.example.dsychyov.sychyovmd.R;
+import com.yandex.metrica.YandexMetrica;
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
@@ -18,6 +19,8 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        YandexMetrica.reportEvent("SettingsActivity OnCreate");
 
         setContentView(R.layout.activity_settings);
 
