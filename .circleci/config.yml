@@ -37,9 +37,6 @@ jobs:
           name: Build PMD Report
           command: ./gradlew pmd
       - run:
-          name: Build Findbugs Report
-          command: ./gradlew findbugs
-      - run:
           name: Build Checkstyle Report
           command: ./gradlew checkstyle
       - store_artifacts:

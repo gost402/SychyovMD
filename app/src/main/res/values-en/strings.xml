@@ -29,4 +29,22 @@
     <string name="description_package_name">Package</string>
     <string name="profile_author">Author</string>
     <string name="profile_phone">Phone</string>
+    <string name="desktop">Desktop</string>
+    <string name="preference_source_background">Background image source</string>
+    <string name="reload_now">Reload background image</string>
+    <string name="preference_reload_background">Backrgound update frequency</string>
+    <string name="desktop_app_add_icon">Choose Icon</string>
+    <string name="invalid_name">Wrong name</string>
+    <string name="invalid_url">Wrong URL</string>
+    <string name="add_contact_title">Add URL</string>
+    <string name="cancel_add_contact_button">Cancel</string>
+    <string name="add_contact_button">Add</string>
+    <string name="desktop_app_name">Name</string>
+    <string name="desktop_app_move">Move</string>
+    <string name="desktop_app_delete">Delete</string>
+    <string name="app_add_desktop">Add to desktop</string>
+    <string name="preference_reload_1_day">24 hours</string>
+    <string name="preference_reload_8_hour">8 hours</string>
+    <string name="preference_reload_1_hour">1 hour</string>
+    <string name="preference_reload_15_minutes">15 minutes</string>
 </resources>

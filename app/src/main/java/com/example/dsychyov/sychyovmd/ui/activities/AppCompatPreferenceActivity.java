@@ -12,7 +12,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.dsychyov.sychyovmd.ui.Utils;
+import com.example.dsychyov.sychyovmd.Utils;
 
 public abstract class AppCompatPreferenceActivity extends PreferenceActivity {
 

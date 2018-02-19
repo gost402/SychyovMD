@@ -6,20 +6,18 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.crashlytics.android.Crashlytics;
 import com.example.dsychyov.sychyovmd.R;
-import com.example.dsychyov.sychyovmd.ui.Utils;
-
-import net.hockeyapp.android.CrashManager;
-import net.hockeyapp.android.UpdateManager;
-
-import io.fabric.sdk.android.Fabric;
+import com.example.dsychyov.sychyovmd.Utils;
+import com.yandex.metrica.YandexMetrica;
 
 public class ProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        YandexMetrica.reportEvent("ProfileActivity OnCreate");
+
         Utils.setActivityTheme(this);
 
         setContentView(R.layout.activity_profile);

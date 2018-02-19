@@ -29,4 +29,22 @@
     <string name="description_package_name">صفقة</string>
     <string name="profile_phone">رقم الهاتف</string>
     <string name="profile_author">مؤلف</string>
+    <string name="preference_reload_1_day">24 ساعة</string>
+    <string name="preference_reload_8_hour">8 ساعات</string>
+    <string name="preference_reload_1_hour">1 ساعة</string>
+    <string name="preference_reload_15_minutes">15 دقيقة</string>
+    <string name="desktop">سطح المكتب</string>
+    <string name="app_add_desktop">إضافة إلى سطح المكتب</string>
+    <string name="desktop_app_delete">حذف</string>
+    <string name="desktop_app_move">نقل</string>
+    <string name="desktop_app_name">اسم</string>
+    <string name="add_contact_button">إضافة</string>
+    <string name="cancel_add_contact_button">إلغاء</string>
+    <string name="add_contact_title">إضافة رابط</string>
+    <string name="invalid_url">رابط خطأ</string>
+    <string name="invalid_name">اسم خاطئ</string>
+    <string name="desktop_app_add_icon">اختر الرمز</string>
+    <string name="preference_reload_background">باكرغوند تردد التحديث</string>
+    <string name="reload_now">إعادة تحميل صورة الخلفية</string>
+    <string name="preference_source_background">مصدر صورة الخلفية</string>
 </resources>

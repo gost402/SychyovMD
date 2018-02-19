@@ -7,7 +7,6 @@ public class Holder {
     public static class GridHolder extends RecyclerView.ViewHolder {
         public GridHolder(final View view) {
             super(view);
-
         }
     }
 }

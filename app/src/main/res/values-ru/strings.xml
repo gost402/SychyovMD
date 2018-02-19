@@ -29,4 +29,22 @@
     <string name="description_package_name">Пакет</string>
     <string name="profile_author">Автор</string>
     <string name="profile_phone">Телефон</string>
+    <string name="desktop">Рабочий стол</string>
+    <string name="app_add_desktop">Добавить на стол</string>
+    <string name="desktop_app_delete">Удалить</string>
+    <string name="desktop_app_move">Передвинуть</string>
+    <string name="desktop_app_name">Название</string>
+    <string name="add_contact_button">Добавить</string>
+    <string name="cancel_add_contact_button">Отмена</string>
+    <string name="add_contact_title">Добавить URL</string>
+    <string name="invalid_url">Неправильный URL</string>
+    <string name="invalid_name">Неправильное имя</string>
+    <string name="desktop_app_add_icon">Задать иконку</string>
+    <string name="reload_now">Обновить рабочий стол сейчас</string>
+    <string name="preference_source_background">Источник рабочего стола</string>
+    <string name="preference_reload_background">Частота обновление рабочего стола</string>
+    <string name="preference_reload_1_day">24 часа</string>
+    <string name="preference_reload_8_hour">8 часов</string>
+    <string name="preference_reload_1_hour">1 час</string>
+    <string name="preference_reload_15_minutes">15 минут</string>
 </resources>

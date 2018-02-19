@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    tools:context="com.example.dsychyov.sychyovmd.ui.fragments.AddUrlFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_contact_title"
+        style="@style/TextAppearance.AppCompat.Headline" />
+
+    <EditText
+        android:id="@+id/name_input"
+        android:layout_width="275dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:inputType="textUri"
+        android:hint="@string/desktop_app_name"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/url_input"
+        android:layout_width="275dp"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:inputType="textUri"
+        android:text="@string/https"
+        android:hint="@string/desktop_app_url"
+        tools:ignore="LabelFor" />
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/add_url_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTheme.NextButton"
+            android:text="@string/add_contact_button">
+        </Button>
+        <Button
+            android:id="@+id/cancel_add_url_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/AppTheme.NextButton"
+            android:text="@string/cancel_add_contact_button">
+        </Button>
+    </LinearLayout>
+</LinearLayout>

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.models.ProfileItem;
+import com.yandex.metrica.YandexMetrica;
 
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class ProfileItemsAdapter extends RecyclerView.Adapter<ProfileItemsAdapte
                 if(item.isOpenInBrowser()) {
                     final Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(item.getText()));
+                    YandexMetrica.reportEvent("Open: " + item.getText());
                     context.startActivity(intent);
                 }
             }

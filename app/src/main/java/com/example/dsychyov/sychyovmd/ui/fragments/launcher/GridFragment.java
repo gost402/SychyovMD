@@ -15,13 +15,21 @@ import android.view.ViewGroup;
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.models.App;
 import com.example.dsychyov.sychyovmd.ui.OffsetItemDecoration;
+import com.example.dsychyov.sychyovmd.ui.activities.LauncherActivity;
 import com.example.dsychyov.sychyovmd.ui.adapters.LauncherAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GridFragment extends BaseLauncherFragment {
-
     public GridFragment() {
+    }
+
+    public static GridFragment newInstance(List<App> data, LauncherActivity launcherActivity) {
+        GridFragment fragment = new GridFragment();
+        fragment.initializeAppsList(data);
+        fragment.initializeLauncherActivity(launcherActivity);
+        return fragment;
     }
 
     @Override
@@ -53,8 +61,7 @@ public class GridFragment extends BaseLauncherFragment {
         final GridLayoutManager layoutManager = new GridLayoutManager(getContext(), spanCount);
         recyclerView.setLayoutManager(layoutManager);
 
-        final List<App> data = getAppsList();
-        final LauncherAdapter launcherAdapter = new LauncherAdapter(data, R.layout.launcher_grid_item);
+        launcherAdapter = new LauncherAdapter(data, R.layout.launcher_grid_item, launcherActivity);
         recyclerView.setAdapter(launcherAdapter);
     }
 }

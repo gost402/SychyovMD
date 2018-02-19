@@ -22,4 +22,28 @@
         android:defaultValue="true"
         android:key="@string/launcher_not_initialized_key"
         android:title="@string/preference_show_welcome_on_next_start" />
+
+    <ListPreference
+        android:defaultValue="15"
+        android:entries="@array/preference_reload_background_text"
+        android:entryValues="@array/preference_reload_background"
+        android:key="@string/launcher_reload_background_key"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/preference_reload_background" />
+
+    <ListPreference
+        android:defaultValue="15"
+        android:entries="@array/preference_background_sources"
+        android:entryValues="@array/preference_background_sources"
+        android:key="@string/preference_background_sources_key"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="@string/preference_source_background" />
+
+    <Preference
+        android:title="@string/reload_now"
+        android:key="@string/reload_now"
+        android:selectable="true"
+        />
 </PreferenceScreen>
