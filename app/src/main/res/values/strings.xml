@@ -16,6 +16,12 @@
     <string name="preference_sorting_type_by_name_desc_key" translatable="false">NameDesc</string>
     <string name="launcher_not_initialized_by_frequency_key" translatable="false">Popularity</string>
 
+    <string name="preference_background_source_yandex_key" translatable="false">Yandex</string>
+    <string name="preference_background_source_picsum_key" translatable="false">Lorem Picsum</string>
+    <string name="preference_background_source_flickr_key" translatable="false">Lorem Flickr</string>
+    <string name="preference_background_source_catapi_key" translatable="false">The Cat Api</string>
+    <string name="preference_background_source_unsplash_key" translatable="false">Unsplash</string>
+
     <string name="author_name">Сычев Денис</string>
     <string name="next">Далее</string>
     <string name="welcome_message">Добро пожаловать</string>
@@ -51,8 +57,22 @@
     <string name="profile_steam" translatable="false">Steam</string>
     <string name="profile_github" translatable="false">Github</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="desktop">Рабочий стол</string>
     <string name="app_add_desktop">Добавить на стол</string>
+    <string name="desktop_app_delete">Удалить</string>
+    <string name="desktop_app_move">Передвинуть</string>
+    <string name="desktop_app_name">Название</string>
+    <string name="add_contact_button">Добавить</string>
+    <string name="cancel_add_contact_button">Отмена</string>
+    <string name="add_contact_title">Добавить URL</string>
+    <string name="desktop_app_url" translatable="false">URL</string>
+    <string name="invalid_url">Неправильный URL</string>
+    <string name="desktop_app_add_icon">Задать иконку</string>
+    <string name="https" translatable="false">https://</string>
+    <string name="preference_reload_background">Частота обновление рабочего стола</string>
+    <string name="launcher_reload_background_key" translatable="false">LAUNCHER_RELOAD_BACKGROUND</string>
+    <string name="reload_now">Обновить рабочий стол сейчас</string>
+    <string name="preference_background_sources_key" translatable="false">PREFERENCE_BACKROUND_RESOURCE_KEY</string>
+    <string name="preference_source_background">Источник рабочего стола</string>
+    <string name="invalid_name">Неправильное имя</string>
 </resources>

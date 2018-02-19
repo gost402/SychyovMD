@@ -25,7 +25,20 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/launcher_fragment_container">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/background_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/placeholder" />
+
+        <com.example.dsychyov.sychyovmd.ui.CustomViewPager
+            android:id="@+id/launcher_fragment_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
+
+
 </LinearLayout>

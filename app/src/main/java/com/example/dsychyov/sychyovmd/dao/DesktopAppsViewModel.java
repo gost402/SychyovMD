@@ -1,9 +1,12 @@
-package com.example.dsychyov.sychyovmd.viewmodel;
+package com.example.dsychyov.sychyovmd.dao;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
+
+import com.example.dsychyov.sychyovmd.dao.DesktopAppDbHolder;
+import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
 
 import java.util.List;
 

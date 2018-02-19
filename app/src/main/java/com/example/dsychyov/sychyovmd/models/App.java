@@ -5,21 +5,16 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDAO;
-import com.example.dsychyov.sychyovmd.ui.Utils;
+import com.example.dsychyov.sychyovmd.Utils;
 import com.yandex.metrica.YandexMetrica;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 

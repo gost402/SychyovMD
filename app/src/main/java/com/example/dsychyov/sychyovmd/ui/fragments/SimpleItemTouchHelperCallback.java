@@ -5,6 +5,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
+import com.example.dsychyov.sychyovmd.ui.adapters.DesktopAppsAdapter;
+
 /**
  * An implementation of {@link ItemTouchHelper.Callback} that enables basic drag & drop and
  * swipe-to-dismiss. Drag events are automatically started by an item long-press.<br/>
@@ -17,22 +19,22 @@ import android.support.v7.widget.helper.ItemTouchHelper;
  */
 public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
-    public static final float ALPHA_FULL = 1.0f;
+    private static final float ALPHA_FULL = 1.0f;
 
-    private final ItemTouchHelperAdapter mAdapter;
+    private final DesktopAppsAdapter mAdapter;
 
-    public SimpleItemTouchHelperCallback(ItemTouchHelperAdapter adapter) {
+    public SimpleItemTouchHelperCallback(DesktopAppsAdapter adapter) {
         mAdapter = adapter;
     }
 
     @Override
     public boolean isLongPressDragEnabled() {
-        return true;
+        return mAdapter.isMove();
     }
 
     @Override
     public boolean isItemViewSwipeEnabled() {
-        return true;
+        return mAdapter.isMove();
     }
 
     @Override
@@ -55,7 +57,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
             return false;
         }
 
-        // Notify the adapter of the move
+        // Notify the adapter of the moveлой неделе в квартире №42 днём обвалился кусок потолка. А в квартире №1
         mAdapter.onItemMove(source.getAdapterPosition(), target.getAdapterPosition());
         return true;
     }

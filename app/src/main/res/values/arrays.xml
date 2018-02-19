@@ -14,4 +14,27 @@
         <item>@string/preference_sort_by_name_desc</item>
         <item>@string/preference_sort_by_frequency</item>
     </string-array>
+    <string-array name="preference_background_sources" >
+        <item>@string/preference_background_source_yandex_key</item>
+        <item>@string/preference_background_source_catapi_key</item>
+        <item>@string/preference_background_source_flickr_key</item>
+        <item>@string/preference_background_source_picsum_key</item>
+        <item>@string/preference_background_source_unsplash_key</item>
+    </string-array>
+    <string-array name="preference_reload_background_text" >
+        <item>@string/preference_reload_15_minutes</item>
+        <item>@string/preference_reload_1_hour</item>
+        <item>@string/preference_reload_8_hour</item>
+        <item>@string/preference_reload_1_day</item>
+    </string-array>
+    <string-array name="preference_reload_background" >
+        <item>15</item>
+        <item>60</item>
+        <item>480</item>
+        <item>1440</item>
+    </string-array>
+    <string name="preference_reload_1_day">24 часа</string>
+    <string name="preference_reload_8_hour">8 часов</string>
+    <string name="preference_reload_1_hour">1 час</string>
+    <string name="preference_reload_15_minutes">15 минут</string>
 </resources>

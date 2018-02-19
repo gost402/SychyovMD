@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd.viewmodel;
+package com.example.dsychyov.sychyovmd.dao;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;

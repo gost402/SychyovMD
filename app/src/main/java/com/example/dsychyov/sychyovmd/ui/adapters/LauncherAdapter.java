@@ -13,14 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dsychyov.sychyovmd.LauncherApplication;
 import com.example.dsychyov.sychyovmd.ui.Holder;
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.models.App;
+import com.example.dsychyov.sychyovmd.ui.activities.LauncherActivity;
 import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
-import com.example.dsychyov.sychyovmd.viewmodel.DesktopAppDb;
-import com.example.dsychyov.sychyovmd.viewmodel.DesktopAppDbHolder;
-import com.example.dsychyov.sychyovmd.viewmodel.InsertDesktopAppService;
+import com.example.dsychyov.sychyovmd.services.InsertDesktopAppService;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.Collections;
@@ -30,12 +28,19 @@ import java.util.List;
 
 public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    @NonNull private final List<App> apps;
+    @NonNull private List<App> apps;
     private final int itemLayoutId;
+    private final LauncherActivity launcherActivity;
 
-    public LauncherAdapter(@NonNull final List<App> data, final int itemLayoutId) {
+    public void setApps(@NonNull List<App> apps) {
+        this.apps = apps;
+        notifyDataSetChanged();
+    }
+
+    public LauncherAdapter(@NonNull final List<App> data, final int itemLayoutId, LauncherActivity launcherActivity) {
         apps = data;
         this.itemLayoutId = itemLayoutId;
+        this.launcherActivity = launcherActivity;
     }
 
     @Override
@@ -69,6 +74,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public void addApplication(App app, Comparator<App> comparator) {
         if(comparator == null) {
             apps.add(app);
+            notifyItemInserted(apps.size() - 1);
         } else {
             int appPosition = Collections.binarySearch(apps, app, comparator);
 
@@ -77,9 +83,8 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             }
 
             apps.add(appPosition, app);
+            notifyItemInserted(appPosition);
         }
-
-        notifyDataSetChanged();
     }
 
     private void bindGridView(@NonNull final Holder.GridHolder gridHolder, final int position) {
@@ -109,8 +114,8 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     return;
                 }
                 YandexMetrica.reportEvent("Start another app");
-
                 app.incrementFrequency(view.getContext());
+                launcherActivity.updateAppsList();
                 view.getContext().startActivity(intent);
             }
         });
@@ -149,7 +154,8 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             case R.id.app_add_desktop: {
                                 YandexMetrica.reportEvent("Add app on desktop");
                                 Intent intent = new Intent(view.getContext().getApplicationContext(), InsertDesktopAppService.class);
-                                intent.putExtra("packageName", app.getPackageName());
+                                intent.putExtra("value", app.getPackageName());
+                                intent.putExtra("type", DesktopApp.Type.APPLICATION);
                                 view.getContext().startService(intent);
                                 break;
                             }

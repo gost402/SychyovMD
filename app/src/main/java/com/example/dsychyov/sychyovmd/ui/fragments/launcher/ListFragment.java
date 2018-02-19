@@ -12,13 +12,20 @@ import android.view.ViewGroup;
 
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.models.App;
+import com.example.dsychyov.sychyovmd.ui.activities.LauncherActivity;
 import com.example.dsychyov.sychyovmd.ui.adapters.LauncherAdapter;
 
 import java.util.List;
 
 public class ListFragment extends BaseLauncherFragment {
-
     public ListFragment() {
+    }
+
+    public static ListFragment newInstance(List<App> list, LauncherActivity launcherActivity) {
+        ListFragment fragment = new ListFragment();
+        fragment.initializeAppsList(list);
+        fragment.initializeLauncherActivity(launcherActivity);
+        return fragment;
     }
 
     @Override
@@ -39,8 +46,7 @@ public class ListFragment extends BaseLauncherFragment {
                 layoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        final List<App> data = getAppsList();
-        final LauncherAdapter launcherAdapter = new LauncherAdapter(data, R.layout.launcher_list_item);
+        launcherAdapter = new LauncherAdapter(data, R.layout.launcher_list_item, launcherActivity);
         recyclerView.setAdapter(launcherAdapter);
     }
 }

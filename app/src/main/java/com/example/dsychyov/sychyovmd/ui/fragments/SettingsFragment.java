@@ -4,11 +4,13 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.ui.activities.SettingsActivity;
+import com.example.dsychyov.sychyovmd.services.DownloadBackgroundAlarmService;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SettingsFragment extends PreferenceFragment {
@@ -17,6 +19,16 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
         setHasOptionsMenu(true);
+
+        Preference preference = findPreference(getString(R.string.reload_now));
+        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(getActivity(), DownloadBackgroundAlarmService.class);
+                getActivity().startService(intent);
+                return false;
+            }
+        });
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd.viewmodel;
+package com.example.dsychyov.sychyovmd.services;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,32 +6,33 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.example.dsychyov.sychyovmd.LauncherApplication;
+import com.example.dsychyov.sychyovmd.dao.DesktopAppDbHolder;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class InsertDesktopAppService extends Service {
+public class DeleteDesktopAppByIdService extends Service {
 
-    private class InsertDesktopAppTask implements Runnable {
-        String packageName;
+    private class DeleteDesktopAppByIdTask implements Runnable {
+        private final int id;
 
-        InsertDesktopAppTask(String packageName) {
-            this.packageName = packageName;
+        DeleteDesktopAppByIdTask(int id) {
+            this.id = id;
         }
 
         @Override
         public void run() {
-            DesktopApp desktopApp = new DesktopApp();
-            desktopApp.packageName = packageName;
-
-            DesktopAppDbHolder.getInstance().getDb(LauncherApplication.getInstance()).desktopAppsDao()
-                    .insert(desktopApp);
+            DesktopAppDbHolder
+                    .getInstance()
+                    .getDb(LauncherApplication.getInstance())
+                    .desktopAppsDao()
+                    .deleteDesktopAppAndUpdatePositions(id);
         }
     }
 
     private ExecutorService mExecutor;
 
-    public InsertDesktopAppService() {
+    public DeleteDesktopAppByIdService() {
         mExecutor = Executors.newSingleThreadExecutor();
     }
 
@@ -43,7 +44,9 @@ public class InsertDesktopAppService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        mExecutor.execute(new InsertDesktopAppTask(intent.getStringExtra("packageName")));
+        int id = intent.getIntExtra("id", 0);
+
+        mExecutor.execute(new DeleteDesktopAppByIdTask(id));
         return START_STICKY;
     }
 

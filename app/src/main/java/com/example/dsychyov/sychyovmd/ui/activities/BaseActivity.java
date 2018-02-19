@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.dsychyov.sychyovmd.LauncherApplication;
-import com.example.dsychyov.sychyovmd.ui.Utils;
+import com.example.dsychyov.sychyovmd.Utils;
 import com.yandex.metrica.YandexMetrica;
 
 public abstract class BaseActivity extends AppCompatActivity {
