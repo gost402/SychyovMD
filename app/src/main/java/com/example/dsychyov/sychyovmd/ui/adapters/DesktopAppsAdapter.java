@@ -31,9 +31,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.ViewHolder>
-    implements ItemTouchHelperAdapter {
+        implements ItemTouchHelperAdapter {
 
-    public final static int PICK_IMAGE = 2014;
+    public static final int PICK_IMAGE = 2014;
 
     private boolean isMove;
 

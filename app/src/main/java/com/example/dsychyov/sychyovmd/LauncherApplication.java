@@ -9,8 +9,9 @@ import com.yandex.metrica.YandexMetricaConfig;
 
 public class LauncherApplication extends Application {
 
-    static LauncherApplication appInstance;
-    public static String API_key = "cbbd4ac5-095a-4762-9165-5251ea7521a7";
+    private static volatile LauncherApplication appInstance = null;
+
+    public static final String API_key = "cbbd4ac5-095a-4762-9165-5251ea7521a7";
     Thread.UncaughtExceptionHandler myUncaughtExceptionHandler;
 
     public LauncherApplication() {

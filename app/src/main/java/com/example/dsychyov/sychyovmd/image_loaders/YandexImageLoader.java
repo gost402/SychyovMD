@@ -66,13 +66,10 @@ public class YandexImageLoader implements ImageLoader {
     @Nullable
     private String processEntry(XmlPullParser parser) throws IOException, XmlPullParserException {
         while (parser.next() != XmlPullParser.END_DOCUMENT) {
-            if (parser.getEventType() == XmlPullParser.START_TAG
-                    && "img".equals(parser.getName())) {
+            if (parser.getEventType() == XmlPullParser.START_TAG && "img".equals(parser.getName())) {
                 for (int i = 1; i < parser.getAttributeCount(); i++) {
-                    if ("size".equals(parser.getAttributeName(i))) {
-                        if ("XXXL".equals(parser.getAttributeValue(i))) {
-                            return parser.getAttributeValue(i-1);
-                        }
+                    if ("size".equals(parser.getAttributeName(i)) && "XXXL".equals(parser.getAttributeValue(i))) {
+                        return parser.getAttributeValue(i-1);
                     }
                 }
             }
