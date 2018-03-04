@@ -31,14 +31,10 @@ public class LauncherApplication extends Application {
 
     private void initializeYandexMetrica() {
         YandexMetricaConfig.Builder configBuilder = YandexMetricaConfig.newConfigBuilder(API_key);
-
         initializeFirstActivation(configBuilder);
-
         YandexMetricaConfig extendedConfig = configBuilder.build();
-
         YandexMetrica.activate(getApplicationContext(), extendedConfig);
         YandexMetrica.enableActivityAutoTracking(this);
-
         initializeUncaughtExeptionHandler();
     }
 

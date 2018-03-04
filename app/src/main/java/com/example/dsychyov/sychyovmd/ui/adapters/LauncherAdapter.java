@@ -13,12 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dsychyov.sychyovmd.ui.Holder;
 import com.example.dsychyov.sychyovmd.R;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.InsertDesktopApp;
 import com.example.dsychyov.sychyovmd.models.App;
+import com.example.dsychyov.sychyovmd.ui.Holder;
 import com.example.dsychyov.sychyovmd.ui.activities.LauncherActivity;
 import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
-import com.example.dsychyov.sychyovmd.services.InsertDesktopAppService;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.Collections;
@@ -125,7 +125,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View view) {
-                PopupMenu popup = new PopupMenu(view.getContext(), view);
+                PopupMenu popup = new PopupMenu(launcherActivity, view);
                 popup.inflate(R.menu.app_context_menu);
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -153,10 +153,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             }
                             case R.id.app_add_desktop: {
                                 YandexMetrica.reportEvent("Add app on desktop");
-                                Intent intent = new Intent(view.getContext().getApplicationContext(), InsertDesktopAppService.class);
-                                intent.putExtra("value", app.getPackageName());
-                                intent.putExtra("type", DesktopApp.Type.APPLICATION);
-                                view.getContext().startService(intent);
+                                new InsertDesktopApp(null, app.getPackageName(), DesktopApp.Type.APPLICATION).execute();
                                 break;
                             }
                             default:
@@ -166,7 +163,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     }
                 });
                 popup.show();
-                return false;
+                return true;
             }
         });
     }

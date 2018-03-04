@@ -1,6 +1,7 @@
 package com.example.dsychyov.sychyovmd.ui.adapters;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -19,9 +20,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dsychyov.sychyovmd.R;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.DeleteDesktopAppById;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.SwapDesktopAppPositions;
 import com.example.dsychyov.sychyovmd.models.App;
-import com.example.dsychyov.sychyovmd.services.DeleteDesktopAppByIdService;
-import com.example.dsychyov.sychyovmd.services.SwapDesktopAppPositionsService;
 import com.example.dsychyov.sychyovmd.ui.fragments.ItemTouchHelperAdapter;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.DesktopFragment;
 import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
@@ -61,10 +62,7 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
         notifyItemMoved(fromPosition, toPosition);
 
         if(fragmentActivity != null && fragmentActivity.getContext() != null) {
-            Intent intent = new Intent(fragmentActivity.getContext(), SwapDesktopAppPositionsService.class);
-            intent.putExtra("fromId", fromApp.id);
-            intent.putExtra("toId", toApp.id);
-            fragmentActivity.getContext().startService(intent);
+            new SwapDesktopAppPositions(fromApp.id, toApp.id).execute();
         }
 
         return true;
@@ -107,10 +105,8 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
                 createApplicationDesktopApp(holder, desktopApp, imageView, textView);
                 break;
             case URI:
-                createUriDesktopApp(holder, desktopApp, imageView, textView);
-                break;
             case CONTACT:
-                createContactDesktopApp(holder, desktopApp, imageView, textView);
+                createDesktopApp(holder, desktopApp, imageView, textView);
                 break;
         }
 
@@ -139,28 +135,26 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
     private void createApplicationDesktopApp(ViewHolder holder, DesktopApp desktopApp, ImageView imageView, TextView textView) {
         App app = App.getAppFromPackageName(holder.itemView.getContext(), desktopApp.value, null);
         if (app != null) {
-            imageView.setImageDrawable(app.getIcon());
+            Drawable icon = desktopApp.customIcon == null ? app.getIcon()
+                    : getDrawableFromByteArray(imageView.getResources(), desktopApp.customIcon);
+
+            imageView.setImageDrawable(icon);
             textView.setText(app.getName());
         }
     }
 
-    private void createContactDesktopApp(ViewHolder holder, DesktopApp desktopApp, ImageView imageView, TextView textView) {
-        imageView.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.author_circle));
+    private void createDesktopApp(ViewHolder holder, DesktopApp desktopApp, ImageView imageView, TextView textView) {
+        Drawable icon = desktopApp.customIcon == null ? holder.itemView.getResources().getDrawable(R.drawable.author_circle)
+                                                      : getDrawableFromByteArray(imageView.getResources(), desktopApp.customIcon);
+        imageView.setImageDrawable(icon);
         textView.setText(desktopApp.name);
     }
 
-    private void createUriDesktopApp(ViewHolder holder, DesktopApp desktopApp, ImageView imageView, TextView textView) {
-        if(desktopApp.customIcon != null) {
-            Drawable customIcon = new BitmapDrawable(
-                    holder.itemView.getResources(),
-                    BitmapFactory.decodeByteArray(desktopApp.customIcon, 0, desktopApp.customIcon.length)
-            );
-            imageView.setImageDrawable(customIcon);
-        } else {
-            imageView.setImageDrawable(holder.itemView.getResources().getDrawable(R.drawable.author_circle));
-        }
-
-        textView.setText(desktopApp.name);
+    private Drawable getDrawableFromByteArray(Resources resources, byte[] image) {
+        return new BitmapDrawable(
+            resources,
+            BitmapFactory.decodeByteArray(image, 0, image.length)
+        );
     }
 
     private void addOnClickListener(@NonNull final DesktopApp app, @NonNull final View view) {
@@ -183,8 +177,8 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
     }
 
     private void openContact(View view, String contactUri) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(contactUri));
+        final Intent intent = new Intent(Intent.ACTION_VIEW);
+        final Uri uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_URI, String.valueOf(contactUri));
         intent.setData(uri);
         view.getContext().startActivity(intent);
     }
@@ -217,7 +211,7 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.desktop_app_remove: {
-                                removeDesktopApp(view, app);
+                                removeDesktopApp(app);
                                 break;
                             }
                             case R.id.desktop_app_add_icon: {
@@ -230,7 +224,7 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
                 });
 
                 popup.show();
-                return false;
+                return true;
             }
         });
     }
@@ -243,13 +237,8 @@ public class DesktopAppsAdapter extends RecyclerView.Adapter<DesktopAppsAdapter.
         fragmentActivity.startActivityForResult(pickPhoto , PICK_IMAGE);
     }
 
-    private void removeDesktopApp(View view, @NonNull DesktopApp app) {
-        Intent intent = new Intent(
-                view.getContext().getApplicationContext(),
-                DeleteDesktopAppByIdService.class
-        );
-        intent.putExtra("id", app.id);
-        view.getContext().startService(intent);
+    private void removeDesktopApp(@NonNull DesktopApp app) {
+        new DeleteDesktopAppById(app.id).execute();
     }
 
     @Override

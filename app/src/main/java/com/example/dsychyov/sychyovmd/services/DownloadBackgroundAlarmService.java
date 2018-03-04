@@ -24,7 +24,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DownloadBackgroundAlarmService extends Service {
-
     public static final String BROADCAST_ACTION_UPDATE_IMAGE = "com.example.shad2018_practical6.simpleexample.UPDATE_IMAGE";
     public static final String BROADCAST_PARAM_IMAGE = "com.example.shad2018_practical6.simpleexample.IMAGE";
     public static final String MAIN_BACKGROUND_FILE = "myImage.png";
@@ -59,7 +58,6 @@ public class DownloadBackgroundAlarmService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
-
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

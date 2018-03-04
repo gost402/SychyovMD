@@ -18,8 +18,6 @@ public class ProfileActivity extends BaseActivity {
 
         YandexMetrica.reportEvent("ProfileActivity OnCreate");
 
-        Utils.setActivityTheme(this);
-
         setContentView(R.layout.activity_profile);
 
         initializeToolbar();

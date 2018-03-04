@@ -38,5 +38,4 @@ public abstract class BaseActivity extends AppCompatActivity {
         YandexMetrica.getReporter(this, LauncherApplication.API_key).onPauseSession();
         super.onPause();
     }
-
 }

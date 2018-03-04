@@ -28,8 +28,6 @@ public class Utils
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         boolean isDark = preferences.getBoolean(activity.getResources().getString(R.string.launcher_theme_dark_key), false);
 
-        YandexMetrica.reportEvent("User use dark theme: " + String.valueOf(isDark));
-
         activity.setTheme(isDark ? R.style.AppTheme_Dark : R.style.AppTheme);
     }
 
@@ -47,8 +45,6 @@ public class Utils
             locale = context.getResources().getConfiguration().locale;
         }
 
-        YandexMetrica.reportEvent("User locale: " + locale.toString());
-
         return locale;
     }
 
@@ -61,23 +57,6 @@ public class Utils
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         resizedBitmap.compress(Bitmap.CompressFormat.PNG, iconQuality, bos);
         return bos.toByteArray();
-    }
-
-    private static Bitmap resizeBitmap(Bitmap bitmap, int maxSize) {
-        int outWidth;
-        int outHeight;
-        int inWidth = bitmap.getWidth();
-        int inHeight = bitmap.getHeight();
-
-        if(inWidth > inHeight){
-            outWidth = maxSize;
-            outHeight = (inHeight * maxSize) / inWidth;
-        } else {
-            outHeight = maxSize;
-            outWidth = (inWidth * maxSize) / inHeight;
-        }
-
-        return Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
     }
 
     @Nullable
@@ -101,5 +80,22 @@ public class Utils
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static Bitmap resizeBitmap(Bitmap bitmap, int maxSize) {
+        int outWidth;
+        int outHeight;
+        int inWidth = bitmap.getWidth();
+        int inHeight = bitmap.getHeight();
+
+        if(inWidth > inHeight){
+            outWidth = maxSize;
+            outHeight = (inHeight * maxSize) / inWidth;
+        } else {
+            outHeight = maxSize;
+            outWidth = (inWidth * maxSize) / inHeight;
+        }
+
+        return Bitmap.createScaledBitmap(bitmap, outWidth, outHeight, false);
     }
 }

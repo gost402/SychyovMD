@@ -1,20 +1,16 @@
 package com.example.dsychyov.sychyovmd.ui.activities;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.dsychyov.sychyovmd.R;
-import com.example.dsychyov.sychyovmd.listeners.ChangeThemeSharedPreferencesListener;
 import com.yandex.metrica.YandexMetrica;
 
-public class SettingsActivity extends AppCompatPreferenceActivity {
-
-    ChangeThemeSharedPreferencesListener changeThemeSharedPreferencesListener;
+public class SettingsActivity extends AppCompatPreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +20,26 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         YandexMetrica.reportEvent("SettingsActivity OnCreate");
 
         initializeToolbar();
-        initializePreferencesListener();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
+        if(item.getItemId() == android.R.id.home) {
+            goToLauncherActivity();
+            return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
-    private void initializePreferencesListener() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        changeThemeSharedPreferencesListener = new ChangeThemeSharedPreferencesListener(this);
-        preferences.registerOnSharedPreferenceChangeListener(changeThemeSharedPreferencesListener);
+    @Override
+    public void onBackPressed() {
+        goToLauncherActivity();
+    }
+
+    private void goToLauncherActivity() {
+        finish();
+        startActivity(new Intent(this, LauncherActivity.class));
     }
 
     private void initializeToolbar() {
@@ -53,5 +52,12 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         }
 
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals(getString(R.string.launcher_theme_dark_key))) {
+            recreate();
+        }
     }
 }

@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 
 import com.example.dsychyov.sychyovmd.R;
-import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDAO;
+import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDao;
 import com.example.dsychyov.sychyovmd.Utils;
 import com.yandex.metrica.YandexMetrica;
 
@@ -79,8 +79,8 @@ public class App {
     };
 
     public void incrementFrequency(Context context) {
-        PackageFrequenciesDAO packageFrequenciesDAO = new PackageFrequenciesDAO(context);
-        packageFrequenciesDAO.insertOrUpdate(packageName, ++frequency);
+        PackageFrequenciesDao packageFrequenciesDao = new PackageFrequenciesDao(context);
+        packageFrequenciesDao.insertOrUpdate(packageName, ++frequency);
         description = getAppDescription(context, packageName, createdAt);
     }
 

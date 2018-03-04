@@ -32,20 +32,19 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.dsychyov.sychyovmd.R;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.DeleteDesktopAppByPackageName;
 import com.example.dsychyov.sychyovmd.broadcast_receivers.LauncherActivityBroadcastReceiver;
-import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDAO;
+import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDao;
 import com.example.dsychyov.sychyovmd.image_loaders.ImageSaver;
-import com.example.dsychyov.sychyovmd.listeners.RecreateLauncherActivityListener;
 import com.example.dsychyov.sychyovmd.models.App;
+import com.example.dsychyov.sychyovmd.services.DownloadBackgroundAlarmService;
+import com.example.dsychyov.sychyovmd.ui.CustomViewPager;
+import com.example.dsychyov.sychyovmd.ui.adapters.DesktopAppsAdapter;
 import com.example.dsychyov.sychyovmd.ui.adapters.LauncherAdapter;
 import com.example.dsychyov.sychyovmd.ui.adapters.LauncherFragmentsAdapter;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.DesktopFragment;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.GridFragment;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.ListFragment;
-import com.example.dsychyov.sychyovmd.ui.CustomViewPager;
-import com.example.dsychyov.sychyovmd.ui.adapters.DesktopAppsAdapter;
-import com.example.dsychyov.sychyovmd.services.DownloadBackgroundAlarmService;
-import com.example.dsychyov.sychyovmd.services.RemoveDesktopAppByPackageNameService;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.ArrayList;
@@ -63,10 +62,8 @@ public class LauncherActivity extends BaseActivity
     private UpdateAppsTask updateAppsTask;
 
     private boolean isHideMenu;
-    private boolean isRecreateActivity;
 
     private BroadcastReceiver broadcastReceiver;
-//    private RecreateLauncherActivityListener recreateLauncherActivityListener;
 
     public void updateBackgroundImage() {
         final Bitmap bitmap = ImageSaver.getInstance().loadImage(
@@ -91,8 +88,7 @@ public class LauncherActivity extends BaseActivity
         initializeNavigationDrawer();
         initializeDownloadBackgroundAlarmService();
         initializeFragmentsViewPager();
-        // TODO: Fix bug with infinite loading.
-        //        initializePreferencesListener();
+
         updateAppsList();
 
         registerApplicationsChangesReceiver();
@@ -103,16 +99,6 @@ public class LauncherActivity extends BaseActivity
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if(isRecreateActivity) {
-            isRecreateActivity = false;
-            recreate();
-        }
     }
 
     @Override
@@ -266,16 +252,6 @@ public class LauncherActivity extends BaseActivity
         });
     }
 
-    public void setRecreateActivity() {
-        isRecreateActivity = true;
-    }
-
-//    private void initializePreferencesListener() {
-//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        recreateLauncherActivityListener = new RecreateLauncherActivityListener(this);
-//        preferences.registerOnSharedPreferenceChangeListener(recreateLauncherActivityListener);
-//    }
-
     public void updateAppsList() {
         if(updateAppsTask != null && !updateAppsTask.isCancelled()) {
             updateAppsTask.cancel(true);
@@ -332,8 +308,8 @@ public class LauncherActivity extends BaseActivity
 
         List<ApplicationInfo> appsInfo = packageManager.getInstalledApplications(0);
         List<App> apps = new ArrayList<>();
-        PackageFrequenciesDAO packageFrequenciesDAO = new PackageFrequenciesDAO(this);
-        List<Pair<String, Integer>> packageFrequencies = packageFrequenciesDAO.getFrequencies();
+        PackageFrequenciesDao packageFrequenciesDao = new PackageFrequenciesDao(this);
+        List<Pair<String, Integer>> packageFrequencies = packageFrequenciesDao.getFrequencies();
 
         for (ApplicationInfo appInfo : appsInfo) {
             App app = App.getAppFromPackageName(this, appInfo.packageName, packageFrequencies);
@@ -386,8 +362,6 @@ public class LauncherActivity extends BaseActivity
         LauncherAdapter launcherAdapter = (LauncherAdapter) recyclerView.getAdapter();
         launcherAdapter.removeApplicationByPackageName(packageName);
 
-        Intent removeDesktopApp = new Intent(this, RemoveDesktopAppByPackageNameService.class);
-        removeDesktopApp.putExtra("packageName", packageName);
-        startService(removeDesktopApp);
+        new DeleteDesktopAppByPackageName(packageName).execute();
     }
 }

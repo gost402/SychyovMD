@@ -23,15 +23,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.dsychyov.sychyovmd.R;
-import com.example.dsychyov.sychyovmd.ui.OffsetItemDecoration;
 import com.example.dsychyov.sychyovmd.Utils;
-import com.example.dsychyov.sychyovmd.ui.fragments.SimpleItemTouchHelperCallback;
-import com.example.dsychyov.sychyovmd.ui.fragments.AddUrlFragment;
-import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
-import com.example.dsychyov.sychyovmd.ui.adapters.DesktopAppsAdapter;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.InsertDesktopApp;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.UpdateDesktopAppCustomIcon;
 import com.example.dsychyov.sychyovmd.dao.DesktopAppsViewModel;
-import com.example.dsychyov.sychyovmd.services.InsertDesktopAppService;
-import com.example.dsychyov.sychyovmd.services.UpdateDesktopAppCustomIconService;
+import com.example.dsychyov.sychyovmd.ui.OffsetItemDecoration;
+import com.example.dsychyov.sychyovmd.ui.adapters.DesktopAppsAdapter;
+import com.example.dsychyov.sychyovmd.ui.fragments.AddUrlFragment;
+import com.example.dsychyov.sychyovmd.ui.fragments.SimpleItemTouchHelperCallback;
+import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.io.IOException;
@@ -132,12 +132,7 @@ public class DesktopFragment extends BaseLauncherFragment implements OnStartDrag
         String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_ID));
         cursor.close();
 
-        Intent intent = new Intent(getContext().getApplicationContext(), InsertDesktopAppService.class);
-        intent.putExtra("type", DesktopApp.Type.CONTACT);
-        intent.putExtra("name", name);
-        intent.putExtra("value", contactId);
-
-        getContext().startService(intent);
+        new InsertDesktopApp(name, contactId, DesktopApp.Type.CONTACT).execute();
     }
 
     private void pickIconForDesktopApp(Intent data) {
@@ -147,14 +142,14 @@ public class DesktopFragment extends BaseLauncherFragment implements OnStartDrag
 
         Uri selectedImage = data.getData();
 
+        // TODO: Do something with it, disgusting
         try {
-            Intent newIntent = new Intent(getContext(), UpdateDesktopAppCustomIconService.class);
-
-            newIntent.putExtra("id", toBeIconPickedDesktopAppId.intValue());
+            UpdateDesktopAppCustomIcon task = new UpdateDesktopAppCustomIcon(
+                    toBeIconPickedDesktopAppId,
+                    Utils.getByteArrayFromImage(getContext(), selectedImage)
+            );
             toBeIconPickedDesktopAppId = null;
-
-            newIntent.putExtra("customIcon", Utils.getByteArrayFromImage(getContext(), selectedImage));
-            getContext().startService(newIntent);
+            task.execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
