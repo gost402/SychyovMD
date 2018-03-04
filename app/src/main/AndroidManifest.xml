@@ -38,6 +38,13 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activities.LauncherActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sychyov_md" android:host="profile_activity" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.activities.SettingsActivity" android:parentActivityName=".ui.activities.LauncherActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
@@ -53,5 +60,11 @@
             android:enabled="true"
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:exported="true" />
+
+        <receiver android:name=".broadcast_receivers.SilentPushReceiver">
+            <intent-filter>
+                <action android:name="com.example.dsychyov.sychyovmd.action.ymp.SILENT_PUSH_RECEIVE"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

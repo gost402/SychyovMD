@@ -36,6 +36,7 @@ public class DownloadBackgroundAlarmService extends Service {
             Log.i("TAG", "***************************START DOWNLOAD***********************");
 
             final String imageUrl = getImageLoader().getImageUrl();
+
             if (!TextUtils.isEmpty(imageUrl)) {
                 final Bitmap bitmap = Utils.loadBitmap(imageUrl);
                 ImageSaver.getInstance().saveImage(getApplicationContext(), bitmap, MAIN_BACKGROUND_FILE);
@@ -78,7 +79,7 @@ public class DownloadBackgroundAlarmService extends Service {
                 getString(R.string.preference_background_source_yandex_key)
         );
 
-        ImageLoader imageLoader = null;
+        ImageLoader imageLoader = new YandexImageLoader();
 
         switch (sourceKey) {
             case "The Cat Api":

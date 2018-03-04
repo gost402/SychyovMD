@@ -75,4 +75,6 @@
     <string name="preference_background_sources_key" translatable="false">PREFERENCE_BACKROUND_RESOURCE_KEY</string>
     <string name="preference_source_background">Источник рабочего стола</string>
     <string name="invalid_name">Неправильное имя</string>
+    <string name="show_secret_profile_item_key">SHOW_SECRET_PROFILE_ITEM</string>
+    <string name="secret_playlist">Secret Playlist</string>
 </resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1078651443043",
+    "firebase_url": "https://sychyovmd.firebaseio.com",
+    "project_id": "sychyovmd",
+    "storage_bucket": "sychyovmd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078651443043:android:5a6aaa2bdc07d557",
+        "android_client_info": {
+          "package_name": "com.example.dsychyov.sychyovmd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078651443043-22j8o0oubstllh6mo3iks2pa0smfgb0i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAMA5c3CLC9M8BPZrUHYPlXoVpGLgXqVU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

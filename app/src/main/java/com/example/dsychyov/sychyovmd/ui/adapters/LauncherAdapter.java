@@ -28,7 +28,7 @@ import java.util.List;
 
 public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    @NonNull private List<App> apps;
+    private List<App> apps;
     private final int itemLayoutId;
     private final LauncherActivity launcherActivity;
 
@@ -43,20 +43,21 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.launcherActivity = launcherActivity;
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(itemLayoutId, parent, false);
         return new Holder.GridHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
         bindGridView((Holder.GridHolder) holder, position);
     }
 
     @Override
     public int getItemCount() {
-        return apps.size();
+        return apps == null ? 0 : apps.size();
     }
 
     public void removeApplicationByPackageName(String packageName) {

@@ -71,6 +71,11 @@ public class LauncherActivity extends BaseActivity
                 DownloadBackgroundAlarmService.MAIN_BACKGROUND_FILE
         );
 
+        if(bitmap == null) {
+            final Intent intent = new Intent(this, DownloadBackgroundAlarmService.class);
+            startService(intent);
+        }
+
         ImageView backgroundImage = findViewById(R.id.background_image);
         backgroundImage.setAlpha(0.6f);
         backgroundImage.setImageBitmap(bitmap);

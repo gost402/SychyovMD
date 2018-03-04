@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd;
+package com.example.dsychyov.sychyovmd.support;
 
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
@@ -6,7 +6,7 @@ import android.view.View;
 
 import org.hamcrest.Matcher;
 
-public class MyViewAction {
+public class RecycleViewItemLongClick {
     public static ViewAction longClickChildViewWithId(final int id) {
         return new ViewAction() {
             @Override

@@ -1,4 +1,4 @@
-package com.example.dsychyov.sychyovmd;
+package com.example.dsychyov.sychyovmd.support;
 
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
