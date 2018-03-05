@@ -32,6 +32,8 @@
 
         <activity android:name=".ui.activities.LauncherActivity"
             android:launchMode="singleTask"
+            android:stateNotNeeded="true"
+            android:noHistory="true"
             android:clearTaskOnLaunch="true"
             />
         <activity android:name=".ui.activities.WelcomeActivity" />
