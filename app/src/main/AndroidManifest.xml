@@ -3,29 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dsychyov.sychyovmd">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor"
+        android:name=".LauncherApplication"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".ui.activities.EntryActivity"
+            android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data
-            android:name="io.fabric.ApiKey"
+
+        <activity android:name=".ui.activities.LauncherActivity" android:launchMode="singleInstance" />
+        <activity android:name=".ui.activities.WelcomeActivity" />
+        <activity android:name=".ui.activities.ProfileActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".ui.activities.LauncherActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activities.LauncherActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="sychyov_md" android:host="profile_activity" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activities.SettingsActivity" android:parentActivityName=".ui.activities.LauncherActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.dsychyov.sychyovmd.ui.activities.LauncherActivity" />
+        </activity>
+
+        <meta-data android:name="io.fabric.ApiKey"
             android:value="1fc53f6b6d767d5cf4c59ff9fd137e6c379282e1" />
-        <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="${HOCKEYAPP_APP_ID}" />
+        <meta-data android:name="net.hockeyapp.android.appIdentifier"
+            android:value="${HOCKEYAPP_APP_ID}" />
+
+        <service android:name=".services.DownloadBackgroundAlarmService"
+            android:enabled="true"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:exported="true" />
+
+        <receiver android:name=".broadcast_receivers.SilentPushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.dsychyov.sychyovmd.action.ymp.SILENT_PUSH_RECEIVE"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

@@ -1,0 +1,48 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/desktop_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_anchor="@id/desktop_recycler_view"
+        app:layout_anchorGravity="end|bottom"
+        fab:menu_colorNormal="#DA4336"
+        fab:menu_colorPressed="#E75043"
+        fab:menu_colorRipple="#99FFFFFF"
+        fab:menu_icon="@drawable/fab_add"
+        fab:menu_labels_colorPressed="#444444"
+        fab:menu_labels_colorRipple="#66FFFFFF"
+        fab:menu_labels_textColor="#FFFFFF"
+        fab:menu_shadowColor="#66000000">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/desktop_add_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_phone_dark" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/desktop_add_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_browser_dark" />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+</android.support.design.widget.CoordinatorLayout>

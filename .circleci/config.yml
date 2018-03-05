@@ -37,9 +37,6 @@ jobs:
           name: Build PMD Report
           command: ./gradlew pmd
       - run:
-          name: Build Findbugs Report
-          command: ./gradlew findbugs
-      - run:
           name: Build Checkstyle Report
           command: ./gradlew checkstyle
       - store_artifacts:
@@ -109,14 +106,13 @@ workflows:
             - prepare_dependencies
       - run_tests:
           requires:
-            - prepare_dependencies
+            - run_code_analyzers
       - build_app:
           requires:
-            - prepare_dependencies
+            - run_tests
       - deploy_release:
           requires:
             - build_app
-            - run_tests
           filters:
             branches:
               only: master

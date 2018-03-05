@@ -1,20 +1,108 @@
 <resources>
+    <attr name="icon_info" format="reference"/>
+    <attr name="icon_phone" format="reference"/>
+    <attr name="icon_email" format="reference"/>
+    <attr name="icon_browser" format="reference"/>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="icon_info" >@drawable/ic_action_info</item>
+        <item name="icon_phone" >@drawable/ic_action_phone</item>
+        <item name="icon_email" >@drawable/ic_action_email</item>
+        <item name="icon_browser" >@drawable/ic_action_browser</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="icon_info" >@drawable/ic_action_info_dark</item>
+        <item name="icon_phone" >@drawable/ic_action_phone_dark</item>
+        <item name="icon_email" >@drawable/ic_action_email_dark</item>
+        <item name="icon_browser" >@drawable/ic_action_browser_dark</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.NextButton" parent="Widget.AppCompat.Button.Colored" >
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="AppTheme.WelcomePageAppIcon">
+        <item name="android:layout_height">@dimen/welcome_page_app_icon</item>
+        <item name="android:layout_width">@dimen/welcome_page_app_icon</item>
+        <item name="android:layout_margin">@dimen/welcome_page_margin</item>
+    </style>
+    <style name="AppTheme.WelcomePageAppName">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_margin">@dimen/welcome_page_margin</item>
+        <item name="android:textSize">@dimen/welcome_page_app_name</item>
+    </style>
+    <style name="AppTheme.WelcomePageHelloMessage">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_margin">@dimen/welcome_page_margin</item>
+        <item name="android:textSize">@dimen/welcome_page_hello_message</item>
+    </style>
+    <style name="AppTheme.WelcomePageAppDescription">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_margin">@dimen/welcome_page_margin</item>
+        <item name="android:textSize">@dimen/welcome_page_app_description</item>
+    </style>
+
+    <style name="AppTheme.WelcomePageRadiobuttonsWrapper" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">@dimen/welcome_page_radiobutton_margin</item>
+    </style>
+
+    <style name="AppTheme.WelcomePageRadiobuttonWrapper" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_margin">@dimen/welcome_page_radiobutton_margin</item>
+        <item name="android:padding">@dimen/welcome_page_radiobutton_margin</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/borders</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="AppTheme.WelcomePageThemeRadiobutton" >
+        <item name="android:paddingStart">@dimen/welcome_page_app_theme_radiobutton_margin</item>
+        <item name="android:textSize">@dimen/welcome_page_app_theme</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="AppTheme.WelcomePageLayoutRadiobutton" >
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/welcome_page_app_layout</item>
+        <item name="android:paddingStart">@dimen/welcome_page_app_theme_radiobutton_margin</item>
+    </style>
+
+    <style name="AppTheme.WelcomePageLayoutRadiobuttonSubtext" >
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/welcome_page_app_layout_description</item>
+        <item name="android:layout_marginTop">@dimen/welcome_page_radiobutton_subtext_margin</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
 </resources>
