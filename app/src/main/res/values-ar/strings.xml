@@ -47,4 +47,5 @@
     <string name="preference_reload_background">باكرغوند تردد التحديث</string>
     <string name="reload_now">إعادة تحميل صورة الخلفية</string>
     <string name="preference_source_background">مصدر صورة الخلفية</string>
+    <string name="secret_playlist">قائمة التشغيل السرية</string>
 </resources>

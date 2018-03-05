@@ -5,8 +5,6 @@ import com.example.dsychyov.sychyovmd.image_loaders.LoremFlickrImageLoader;
 import com.example.dsychyov.sychyovmd.image_loaders.LoremPicsumImageLoader;
 import com.example.dsychyov.sychyovmd.image_loaders.TheCatApiImageLoader;
 import com.example.dsychyov.sychyovmd.image_loaders.UnsplashImageLoader;
-import com.example.dsychyov.sychyovmd.utils.Converters;
-import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

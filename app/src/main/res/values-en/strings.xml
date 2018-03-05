@@ -47,4 +47,5 @@
     <string name="preference_reload_8_hour">8 hours</string>
     <string name="preference_reload_1_hour">1 hour</string>
     <string name="preference_reload_15_minutes">15 minutes</string>
+    <string name="secret_playlist">Secret Playlist</string>
 </resources>
