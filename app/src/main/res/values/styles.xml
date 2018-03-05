@@ -14,6 +14,7 @@
         <item name="icon_phone" >@drawable/ic_action_phone</item>
         <item name="icon_email" >@drawable/ic_action_email</item>
         <item name="icon_browser" >@drawable/ic_action_browser</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat">
@@ -26,6 +27,7 @@
         <item name="icon_phone" >@drawable/ic_action_phone_dark</item>
         <item name="icon_email" >@drawable/ic_action_email_dark</item>
         <item name="icon_browser" >@drawable/ic_action_browser_dark</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
@@ -97,5 +99,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:textSize">@dimen/welcome_page_app_layout_description</item>
         <item name="android:layout_marginTop">@dimen/welcome_page_radiobutton_subtext_margin</item>
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>

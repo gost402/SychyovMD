@@ -10,7 +10,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.Pair;
 
 import com.example.dsychyov.sychyovmd.R;
-import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDAO;
+import com.example.dsychyov.sychyovmd.dao.PackageFrequenciesDao;
 import com.example.dsychyov.sychyovmd.Utils;
 import com.yandex.metrica.YandexMetrica;
 
@@ -50,37 +50,9 @@ public class App {
         return description;
     }
 
-    private static final Comparator<App> nameAscComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return app.name.compareTo(t1.getName());
-        }
-    };
-
-    private static final Comparator<App> nameDescComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return - app.name.compareTo(t1.getName());
-        }
-    };
-
-    private static final Comparator<App> createdAtComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return (int) (app.createdAt - t1.getCreatedAt());
-        }
-    };
-
-    private static final Comparator<App> frequencyComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return t1.getFrequency() - app.frequency;
-        }
-    };
-
     public void incrementFrequency(Context context) {
-        PackageFrequenciesDAO packageFrequenciesDAO = new PackageFrequenciesDAO(context);
-        packageFrequenciesDAO.insertOrUpdate(packageName, ++frequency);
+        PackageFrequenciesDao packageFrequenciesDao = new PackageFrequenciesDao(context);
+        packageFrequenciesDao.insertOrUpdate(packageName, ++frequency);
         description = getAppDescription(context, packageName, createdAt);
     }
 
@@ -157,4 +129,32 @@ public class App {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(context.getString(R.string.launcher_sorting_type_key), "Default");
     }
+
+    private static final Comparator<App> nameAscComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return app.name.compareTo(t1.getName());
+        }
+    };
+
+    private static final Comparator<App> nameDescComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return - app.name.compareTo(t1.getName());
+        }
+    };
+
+    private static final Comparator<App> createdAtComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return (int) (app.createdAt - t1.getCreatedAt());
+        }
+    };
+
+    private static final Comparator<App> frequencyComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return t1.getFrequency() - app.frequency;
+        }
+    };
 }

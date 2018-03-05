@@ -13,12 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dsychyov.sychyovmd.ui.Holder;
 import com.example.dsychyov.sychyovmd.R;
+import com.example.dsychyov.sychyovmd.async_tasks.launcher.InsertDesktopApp;
 import com.example.dsychyov.sychyovmd.models.App;
+import com.example.dsychyov.sychyovmd.ui.Holder;
 import com.example.dsychyov.sychyovmd.ui.activities.LauncherActivity;
 import com.example.dsychyov.sychyovmd.viewmodel.DesktopApp;
-import com.example.dsychyov.sychyovmd.services.InsertDesktopAppService;
 import com.yandex.metrica.YandexMetrica;
 
 import java.util.Collections;
@@ -28,7 +28,7 @@ import java.util.List;
 
 public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    @NonNull private List<App> apps;
+    private List<App> apps;
     private final int itemLayoutId;
     private final LauncherActivity launcherActivity;
 
@@ -43,20 +43,21 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         this.launcherActivity = launcherActivity;
     }
 
+    @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(itemLayoutId, parent, false);
         return new Holder.GridHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
         bindGridView((Holder.GridHolder) holder, position);
     }
 
     @Override
     public int getItemCount() {
-        return apps.size();
+        return apps == null ? 0 : apps.size();
     }
 
     public void removeApplicationByPackageName(String packageName) {
@@ -125,7 +126,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View view) {
-                PopupMenu popup = new PopupMenu(view.getContext(), view);
+                PopupMenu popup = new PopupMenu(launcherActivity, view);
                 popup.inflate(R.menu.app_context_menu);
 
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -153,10 +154,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                             }
                             case R.id.app_add_desktop: {
                                 YandexMetrica.reportEvent("Add app on desktop");
-                                Intent intent = new Intent(view.getContext().getApplicationContext(), InsertDesktopAppService.class);
-                                intent.putExtra("value", app.getPackageName());
-                                intent.putExtra("type", DesktopApp.Type.APPLICATION);
-                                view.getContext().startService(intent);
+                                new InsertDesktopApp(null, app.getPackageName(), DesktopApp.Type.APPLICATION).execute();
                                 break;
                             }
                             default:
@@ -166,7 +164,7 @@ public class LauncherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     }
                 });
                 popup.show();
-                return false;
+                return true;
             }
         });
     }

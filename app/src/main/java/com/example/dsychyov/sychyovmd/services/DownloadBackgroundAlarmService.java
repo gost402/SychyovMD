@@ -24,7 +24,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DownloadBackgroundAlarmService extends Service {
-
     public static final String BROADCAST_ACTION_UPDATE_IMAGE = "com.example.shad2018_practical6.simpleexample.UPDATE_IMAGE";
     public static final String BROADCAST_PARAM_IMAGE = "com.example.shad2018_practical6.simpleexample.IMAGE";
     public static final String MAIN_BACKGROUND_FILE = "myImage.png";
@@ -37,6 +36,7 @@ public class DownloadBackgroundAlarmService extends Service {
             Log.i("TAG", "***************************START DOWNLOAD***********************");
 
             final String imageUrl = getImageLoader().getImageUrl();
+
             if (!TextUtils.isEmpty(imageUrl)) {
                 final Bitmap bitmap = Utils.loadBitmap(imageUrl);
                 ImageSaver.getInstance().saveImage(getApplicationContext(), bitmap, MAIN_BACKGROUND_FILE);
@@ -60,7 +60,6 @@ public class DownloadBackgroundAlarmService extends Service {
         return null;
     }
 
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         mExecutor.execute(new DownloadBackgroundAlarmTask());
@@ -80,7 +79,7 @@ public class DownloadBackgroundAlarmService extends Service {
                 getString(R.string.preference_background_source_yandex_key)
         );
 
-        ImageLoader imageLoader = null;
+        ImageLoader imageLoader = new YandexImageLoader();
 
         switch (sourceKey) {
             case "The Cat Api":

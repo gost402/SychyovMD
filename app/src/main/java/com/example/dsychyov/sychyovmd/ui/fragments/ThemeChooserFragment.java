@@ -1,5 +1,7 @@
 package com.example.dsychyov.sychyovmd.ui.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.example.dsychyov.sychyovmd.R;
+import com.example.dsychyov.sychyovmd.ui.activities.WelcomeActivity;
 
 public class ThemeChooserFragment extends Fragment {
     private boolean isDark;
@@ -86,6 +89,12 @@ public class ThemeChooserFragment extends Fragment {
         editor.putBoolean(getString(R.string.launcher_theme_dark_key), isDark);
         editor.apply();
 
+//
+//        Activity activity = getActivity();
+//        Intent intent = new Intent(activity, WelcomeActivity.class);
+//        startActivity(intent); // start same activity
+//        activity.finish(); // destroy older activity
+//        activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out); // this is important for seamless transition
         getActivity().recreate();
     }
 }

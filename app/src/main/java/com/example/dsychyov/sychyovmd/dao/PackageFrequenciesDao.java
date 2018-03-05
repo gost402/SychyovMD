@@ -11,7 +11,7 @@ import android.support.v4.util.Pair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PackageFrequenciesDAO {
+public class PackageFrequenciesDao {
     private Connection connection;
 
     interface TableInfo {
@@ -60,7 +60,7 @@ public class PackageFrequenciesDAO {
     }
 
 
-    public PackageFrequenciesDAO(Context context) {
+    public PackageFrequenciesDao(Context context) {
         connection = new Connection(context);
     }
 

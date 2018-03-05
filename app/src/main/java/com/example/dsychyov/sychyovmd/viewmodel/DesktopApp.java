@@ -2,17 +2,18 @@ package com.example.dsychyov.sychyovmd.viewmodel;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 
 import com.example.dsychyov.sychyovmd.utils.Converters;
 
-@Entity(tableName = "desktop_apps")
+@Entity(tableName = "desktop_apps", indices = { @Index(value = "position", unique = true) })
 public class DesktopApp {
     @PrimaryKey(autoGenerate = true)
     public Integer id;
 
-    @ColumnInfo(index = true)
+    @ColumnInfo
     public Integer position;
 
     public String value;
