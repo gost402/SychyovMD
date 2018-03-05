@@ -47,4 +47,5 @@
     <string name="preference_reload_8_hour">8 часов</string>
     <string name="preference_reload_1_hour">1 час</string>
     <string name="preference_reload_15_minutes">15 минут</string>
+    <string name="secret_playlist">Секретный плейлист</string>
 </resources>

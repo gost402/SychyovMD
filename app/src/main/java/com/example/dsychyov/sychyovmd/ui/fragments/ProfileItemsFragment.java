@@ -1,10 +1,13 @@
 package com.example.dsychyov.sychyovmd.ui.fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -63,7 +66,30 @@ public class ProfileItemsFragment extends Fragment {
         list.add(new ProfileItem(browserIcon, "https://steamcommunity.com/id/gost402", getString(R.string.profile_steam), true));
         list.add(new ProfileItem(browserIcon, "https://github.com/gost402", getString(R.string.profile_github), true));
 
+        Activity activity = getActivity();
+
+        if(activity != null) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            boolean showSecretItem = preferences.getBoolean(
+                    getString(R.string.show_secret_profile_item_key),
+                    false
+            );
+
+            if(showSecretItem) {
+                list.add(secretItem(browserIcon));
+            }
+        }
+
         return list;
+    }
+
+    private ProfileItem secretItem(Drawable icon) {
+        return new ProfileItem(
+                icon,
+                "https://open.spotify.com/user/gost402/playlist/0XqGqJsRYoUG3SOgEwnKql",
+                getString(R.string.secret_playlist),
+                true
+        );
     }
 
     private Drawable getDrawableFromAttribute(Context context, int id) {
