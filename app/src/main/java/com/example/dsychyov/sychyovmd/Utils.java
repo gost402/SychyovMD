@@ -21,10 +21,9 @@ import java.net.URLConnection;
 import java.text.DateFormat;
 import java.util.Locale;
 
-public class Utils
-{
-    public static void setActivityTheme(Activity activity)
-    {
+public class Utils {
+
+    public static void setActivityTheme(Activity activity) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         boolean isDark = preferences.getBoolean(activity.getResources().getString(R.string.launcher_theme_dark_key), false);
 

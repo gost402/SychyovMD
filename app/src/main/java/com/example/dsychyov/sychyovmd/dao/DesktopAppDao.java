@@ -12,6 +12,9 @@ import java.util.List;
 
 @Dao
 public abstract class DesktopAppDao {
+    @Query("SELECT * FROM desktop_apps ORDER BY id")
+    public abstract List<DesktopApp> loadAll();
+
     @Query("SELECT * FROM desktop_apps ORDER BY position")
     public abstract LiveData<List<DesktopApp>> loadDesktopAppsSync();
 
@@ -28,6 +31,11 @@ public abstract class DesktopAppDao {
     @Transaction
     public void deleteDesktopAppByPackageNameAndUpdatePositions(String packageName) {
         Integer position = getDesktopAppPositionByPackageName(packageName);
+
+        if(position == null) {
+            return;
+        }
+
         deleteDesktopAppByPackageName(packageName);
         decrementPositions(position);
     }
@@ -44,8 +52,12 @@ public abstract class DesktopAppDao {
         int fromPosition = getDesktopAppPositionById(fromId);
         int toPosition = getDesktopAppPositionById(toId);
 
-        updateDesktopAppPosition(toId, fromPosition);
+        Integer lastPosition = lastPosition();
+        int tempPosition = lastPosition + 1;
+
+        updateDesktopAppPosition(toId, tempPosition);
         updateDesktopAppPosition(fromId, toPosition);
+        updateDesktopAppPosition(toId, fromPosition);
     }
 
     @Insert

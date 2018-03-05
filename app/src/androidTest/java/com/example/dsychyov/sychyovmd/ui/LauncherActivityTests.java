@@ -55,6 +55,7 @@ public class LauncherActivityTests {
                 )
         );
 
+        // TODO: Idle Resources
         Thread.sleep(1000);
 
         onView(allOf(withId(R.id.title), withText(R.string.app_add_desktop))).check(matches(isDisplayed()));
@@ -85,25 +86,6 @@ public class LauncherActivityTests {
         onView(allOf(withId(R.id.title), withText(R.string.app_add_desktop))).perform(click());
         swipeViewPagerRight(1);
         onView(withId(R.id.desktop_recycler_view)).check(new RecyclerViewItemCountAssertion(desktopItemsCount + 1));
-    }
-
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
-
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
-
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
     }
 
     @Test
@@ -166,5 +148,24 @@ public class LauncherActivityTests {
         for (int i = 0; i < steps; ++i) {
             onView(withId(R.id.launcher_fragment_view_pager)).perform(swipeRight());
         }
+    }
+
+    private static Matcher<View> childAtPosition(
+            final Matcher<View> parentMatcher, final int position) {
+
+        return new TypeSafeMatcher<View>() {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("Child at position " + position + " in parent ");
+                parentMatcher.describeTo(description);
+            }
+
+            @Override
+            public boolean matchesSafely(View view) {
+                ViewParent parent = view.getParent();
+                return parent instanceof ViewGroup && parentMatcher.matches(parent)
+                        && view.equals(((ViewGroup) parent).getChildAt(position));
+            }
+        };
     }
 }

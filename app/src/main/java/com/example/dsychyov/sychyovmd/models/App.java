@@ -50,34 +50,6 @@ public class App {
         return description;
     }
 
-    private static final Comparator<App> nameAscComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return app.name.compareTo(t1.getName());
-        }
-    };
-
-    private static final Comparator<App> nameDescComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return - app.name.compareTo(t1.getName());
-        }
-    };
-
-    private static final Comparator<App> createdAtComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return (int) (app.createdAt - t1.getCreatedAt());
-        }
-    };
-
-    private static final Comparator<App> frequencyComparator = new Comparator<App>() {
-        @Override
-        public int compare(App app, App t1) {
-            return t1.getFrequency() - app.frequency;
-        }
-    };
-
     public void incrementFrequency(Context context) {
         PackageFrequenciesDao packageFrequenciesDao = new PackageFrequenciesDao(context);
         packageFrequenciesDao.insertOrUpdate(packageName, ++frequency);
@@ -157,4 +129,32 @@ public class App {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         return preferences.getString(context.getString(R.string.launcher_sorting_type_key), "Default");
     }
+
+    private static final Comparator<App> nameAscComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return app.name.compareTo(t1.getName());
+        }
+    };
+
+    private static final Comparator<App> nameDescComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return - app.name.compareTo(t1.getName());
+        }
+    };
+
+    private static final Comparator<App> createdAtComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return (int) (app.createdAt - t1.getCreatedAt());
+        }
+    };
+
+    private static final Comparator<App> frequencyComparator = new Comparator<App>() {
+        @Override
+        public int compare(App app, App t1) {
+            return t1.getFrequency() - app.frequency;
+        }
+    };
 }
