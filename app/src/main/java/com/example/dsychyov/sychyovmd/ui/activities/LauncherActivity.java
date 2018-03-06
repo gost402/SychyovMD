@@ -351,7 +351,7 @@ public class LauncherActivity extends BaseActivity
         if(recyclerView != null) {
             DesktopAppsAdapter adapter = (DesktopAppsAdapter) recyclerView.getAdapter();
             boolean newMoveValue = !adapter.isMove();
-            fragmentsViewPager.setPagingEnabled(newMoveValue);
+            fragmentsViewPager.setPagingEnabled(!newMoveValue);
             adapter.setMove(newMoveValue);
             adapter.notifyDataSetChanged();
         }
