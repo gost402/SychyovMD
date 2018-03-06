@@ -14,7 +14,7 @@
     <string name="preference_sorting_type_by_date_key" translatable="false">Date</string>
     <string name="preference_sorting_type_by_name_asc_key" translatable="false">NameAsc</string>
     <string name="preference_sorting_type_by_name_desc_key" translatable="false">NameDesc</string>
-    <string name="launcher_not_initialized_by_frequency_key" translatable="false">Popularity</string>
+    <string name="preference_sorting_type_by_frequency_key" translatable="false">Popularity</string>
 
     <string name="preference_background_source_yandex_key" translatable="false">Yandex</string>
     <string name="preference_background_source_picsum_key" translatable="false">Lorem Picsum</string>
