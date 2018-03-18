@@ -18,6 +18,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         YandexMetrica.reportEvent("WelcomeActivity OnCreate");
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);

@@ -1,4 +1,8 @@
 /build
 /release
 /.idea
+/gradle
+local.properties
+gradlew
+gradlew.bat
 keystore.properties

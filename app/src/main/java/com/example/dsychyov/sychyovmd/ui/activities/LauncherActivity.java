@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.crashlytics.android.Crashlytics;
 import com.example.dsychyov.sychyovmd.R;
 import com.example.dsychyov.sychyovmd.async_tasks.launcher.DeleteDesktopAppByPackageName;
 import com.example.dsychyov.sychyovmd.broadcast_receivers.LauncherActivityBroadcastReceiver;
@@ -47,11 +48,16 @@ import com.example.dsychyov.sychyovmd.ui.fragments.launcher.GridFragment;
 import com.example.dsychyov.sychyovmd.ui.fragments.launcher.ListFragment;
 import com.yandex.metrica.YandexMetrica;
 
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import io.fabric.sdk.android.Fabric;
 
 public class LauncherActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -84,6 +90,17 @@ public class LauncherActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        continuousDeploymentIntegrations();
+
+        boolean shouldBeInitialized = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(getString(R.string.launcher_not_initialized_key), true);
+
+        if(shouldBeInitialized) {
+            startActivityForClass(WelcomeActivity.class);
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_launcher);
 
         YandexMetrica.reportEvent("LauncherActivity OnCreate");
@@ -101,9 +118,36 @@ public class LauncherActivity extends BaseActivity
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        checkForCrashes();
+    }
+
+    private void checkForCrashes() {
+        CrashManager.register(this);
+    }
+
+    private void continuousDeploymentIntegrations() {
+        Fabric.with(this, new Crashlytics());
+        checkForUpdates();
+    }
+
+    private void checkForUpdates() {
+        UpdateManager.register(this);
+    }
+
+    private void unregisterManagers() {
+        UpdateManager.unregister();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(broadcastReceiver);
+
+        if(broadcastReceiver != null) {
+            unregisterReceiver(broadcastReceiver);
+        }
+        unregisterManagers();
     }
 
     @Override
@@ -112,6 +156,12 @@ public class LauncherActivity extends BaseActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterManagers();
     }
 
     @Override
@@ -301,7 +351,7 @@ public class LauncherActivity extends BaseActivity
         if(recyclerView != null) {
             DesktopAppsAdapter adapter = (DesktopAppsAdapter) recyclerView.getAdapter();
             boolean newMoveValue = !adapter.isMove();
-            fragmentsViewPager.setPagingEnabled(newMoveValue);
+            fragmentsViewPager.setPagingEnabled(!newMoveValue);
             adapter.setMove(newMoveValue);
             adapter.notifyDataSetChanged();
         }
